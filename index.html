@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הפורטפוליו שלי</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loader-content">
+            <div class="loader"></div>
+            <h2 class="loader-text">טוען...</h2>
+        </div>
+    </div>
+
+    <!-- Animated Background Particles -->
+    <div class="particles" id="particles"></div>
+    <div id="particles-js"></div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress-bar" id="scrollProgress"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">Portfolio</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link" data-en="Home">בית</a></li>
+                <li><a href="#about" class="nav-link" data-en="About">אודות</a></li>
+                <li><a href="#education" class="nav-link" data-en="Education">השכלה</a></li>
+                <li><a href="#skills" class="nav-link" data-en="Skills">מיומנויות</a></li>
+                <li><a href="#projects" class="nav-link" data-en="Projects">פרויקטים</a></li>
+                <li><a href="#blog" class="nav-link" data-en="Blog">בלוג</a></li>
+                <li><a href="#contact" class="nav-link" data-en="Contact">צור קשר</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button id="langToggle" class="lang-toggle" aria-label="Switch Language">
+                    <span class="lang-text">EN</span>
+                </button>
+                <button id="downloadCV" class="btn-download-cv">
+                    <i class="fas fa-download"></i>
+                    <span data-en="Download CV">הורד קו"ח</span>
+                </button>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to Top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title" data-en="Hello, I'm"><span data-en-start="Hello, I'm ">שלום, אני </span><span class="highlight" id="dynamicName">שי אלישע</span></h1>
+            <p class="hero-subtitle" id="typingText">
+                <span class="typing-cursor"></span>
+            </p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary" data-en="My Projects">הפרויקטים שלי</a>
+                <a href="#contact" class="btn btn-secondary" data-en="Contact Me">צור קשר</a>
+            </div>
+            <div class="social-links">
+                <a href="https://github.com/ShayElisha" target="_blank" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/shay-elisha" target="_blank" class="social-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://twitter.com" target="_blank" class="social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="mailto:shayelisha2312@gmail.com" class="social-link" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="profile-pic"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title" data-en="About Me">אודותיי</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p data-en="Ambitious with a passion for technology, innovation, and improving development processes. Experienced in building client-side and server-side web systems and applications, using JavaScript, TypeScript, React, Node.js, and MongoDB.">שאפתן עם אהבה לטכנולוגיה, חדשנות ולשיפור תהליכי פיתוח. מנוסה בבניית מערכות ואפליקציות ווב מבוססות צד לקוח וצד שרת, תוך שימוש ב־JavaScript, TypeScript, React, Node.js ו־MongoDB.</p>
+                    <p data-en="Possess analytical thinking and high problem-solving abilities, learn quickly and handle challenges well in a dynamic environment. Work well in a team, have excellent communication, personal responsibility, and high initiative. Emphasis on writing clean and efficient code.">בעל חשיבה אנליטית ויכולת גבוהה לפתרון בעיות, לומד מהר ומתמודד היטב עם אתגרים בסביבה דינמית. עובד היטב בצוות, בעל תקשורת מצוינת, אחריות אישית ויוזמה גבוהה. שם דגש על כתיבת קוד נקי ויעיל.</p>
+                    <div class="about-info">
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>ישראל</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>shayelisha2312@gmail.com</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>הנדסאי תוכנה - המכללה למינהל</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-globe"></i>
+                            <span>עברית (שפת אם) | אנגלית (שוטפת)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <h3 class="stat-number">4</h3>
+                        <p class="stat-label" data-en="Major Projects">פרויקטים מרכזיים</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 class="stat-number">10+</h3>
+                        <p class="stat-label" data-en="Technologies">טכנולוגיות</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 class="stat-number">100%</h3>
+                        <p class="stat-label" data-en="Commitment">מחויבות</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Timeline Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <h2 class="section-title" data-en="My Education">ההשכלה שלי</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date" data-en="2024 - Present">2024 - הווה</div>
+                        <h3 data-en="Software Engineer">הנדסאי תוכנה</h3>
+                        <h4 data-en="College of Management">המכללה למינהל</h4>
+                        <p data-en="Final year student in Software Engineering, with extensive specialization in software development and Full Stack technologies:">סטודנט בשנה האחרונה ללימודי הנדסאי תוכנה, עם התמחות רחבה בפיתוח תוכנה ובטכנולוגיות Full Stack:</p>
+                        <ul>
+                            <li>פיתוח מערכות ווב ואפליקציות</li>
+                            <li>ניתוח מערכות מידע וניהול מסדי נתונים</li>
+                            <li>בדיקות תוכנה (QA) וניהול פרויקטים</li>
+                            <li>תכנון וניתוח מערכות מידע</li>
+                            <li>עקרונות בדיקות תוכנה</li>
+                            <li>ניהול יעיל של פרויקטים טכנולוגיים</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title" data-en="My Skills">המיומנויות שלי</h2>
+            
+            <div class="skills-categories">
+                <div class="skill-category">
+                    <h3 class="category-title" data-en="Programming Languages"><i class="fas fa-code"></i> שפות תכנות</h3>
+                    <div class="skills-tags">
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">C#</span>
+                        <span class="skill-tag">PHP</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="category-title" data-en="Frontend"><i class="fas fa-laptop-code"></i> צד לקוח</h3>
+                    <div class="skills-tags">
+                        <span class="skill-tag">React.js</span>
+                        <span class="skill-tag">Angular</span>
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">Tailwind CSS</span>
+                        <span class="skill-tag">UX/UI</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="category-title" data-en="Backend"><i class="fas fa-server"></i> צד שרת</h3>
+                    <div class="skills-tags">
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Express.js</span>
+                        <span class="skill-tag">ASP.NET</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="category-title" data-en="Databases"><i class="fas fa-database"></i> מסדי נתונים</h3>
+                    <div class="skills-tags">
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">SQL Server</span>
+                        <span class="skill-tag">Firebase</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="category-title" data-en="Communication Protocols"><i class="fas fa-network-wired"></i> פרוטוקולי תקשורת</h3>
+                    <div class="skills-tags">
+                        <span class="skill-tag">HTTP</span>
+                        <span class="skill-tag">WebSocket</span>
+                        <span class="skill-tag">TCP/IP</span>
+                        <span class="skill-tag">FTP</span>
+                        <span class="skill-tag">SMTP</span>
+                        <span class="skill-tag">UDP</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="category-title" data-en="Tools & Technologies"><i class="fas fa-tools"></i> כלים וטכנולוגיות</h3>
+                    <div class="skills-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">Copilot</span>
+                        <span class="skill-tag">Axios</span>
+                        <span class="skill-tag">Socket.io</span>
+                        <span class="skill-tag">Entity Framework</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="category-title" data-en="Additional Fields"><i class="fas fa-project-diagram"></i> תחומים נוספים</h3>
+                    <div class="skills-tags">
+                        <span class="skill-tag" data-en="Project Management">ניהול פרויקטים</span>
+                        <span class="skill-tag">Agile/Scrum</span>
+                        <span class="skill-tag" data-en="Planning & Requirements Analysis">תכנון וניתוח דרישות</span>
+                        <span class="skill-tag" data-en="Systems Analysis">ניתוח מערכות</span>
+                        <span class="skill-tag" data-en="Manual & Automated QA">QA ידני ואוטומטי</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title" data-en="My Projects">הפרויקטים שלי</h2>
+            <div class="projects-grid">
+                <!-- Project 1: ERP System -->
+                <div class="project-card" data-project="erp">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <button class="project-link" onclick="openProjectModal('erp')"><i class="fas fa-info-circle"></i></button>
+                            <a href="https://github.com/ShayElisha" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 data-en="Modular ERP System">מערכת ERP מודולרית</h3>
+                        <p data-en="Comprehensive ERP system for complete business process management with AI-based chatbot">מערכת ERP מקיפה לניהול כולל של תהליכים עסקיים עם צ'אט בוט מבוסס AI</p>
+                        <div class="project-tags">
+                            <span class="tag">Node.js</span>
+                            <span class="tag">Express</span>
+                            <span class="tag">MongoDB</span>
+                            <span class="tag">React</span>
+                            <span class="tag">Socket.io</span>
+                            <span class="tag">AI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Delivery System -->
+                <div class="project-card" data-project="delivery">
+                    <div class="project-image project-image-2">
+                        <div class="project-overlay">
+                            <button class="project-link" onclick="openProjectModal('delivery')"><i class="fas fa-info-circle"></i></button>
+                            <a href="https://github.com/ShayElisha" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 data-en="Delivery Management System">מערכת ניהול משלוחים</h3>
+                        <p data-en="Comprehensive system for delivery company with interfaces for managers, drivers, and customers">מערכת מקיפה לחברת שליחויות עם ממשקים למנהלים, נהגים ולקוחות</p>
+                        <div class="project-tags">
+                            <span class="tag">ASP.NET MVC</span>
+                            <span class="tag">Entity Framework</span>
+                            <span class="tag">SQL Server</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Restaurant Platform -->
+                <div class="project-card" data-project="restaurant">
+                    <div class="project-image project-image-3">
+                        <div class="project-overlay">
+                            <button class="project-link" onclick="openProjectModal('restaurant')"><i class="fas fa-info-circle"></i></button>
+                            <a href="https://github.com/ShayElisha" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 data-en="Restaurant Ordering Platform">פלטפורמת הזמנות למסעדות</h3>
+                        <p data-en="Application for booking tables and ordering dishes with intuitive user experience">אפליקציה להזמנת שולחנות ומנות עם חוויית משתמש אינטואיטיבית</p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Business Simulator -->
+                <div class="project-card" data-project="simulator">
+                    <div class="project-image project-image-4">
+                        <div class="project-overlay">
+                            <button class="project-link" onclick="openProjectModal('simulator')"><i class="fas fa-info-circle"></i></button>
+                            <a href="https://github.com/ShayElisha" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 data-en="Business Management Simulator">סימולטור לניהול עסק</h3>
+                        <p data-en="Business management simulation game with profit reports and dynamic graphs">משחק סימולציה לניהול עסק עם דוחות רווח וגרפים דינמיים</p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Tkinter</span>
+                            <span class="tag">Pandas</span>
+                            <span class="tag">Matplotlib</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="project-modal">
+        <div class="modal-overlay" onclick="closeProjectModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeProjectModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="modalBody" class="modal-body">
+                <!-- Content will be injected by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Article Modal -->
+    <div id="articleModal" class="article-modal">
+        <div class="modal-overlay" onclick="closeArticleModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeArticleModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="articleModalBody" class="modal-body article-modal-body">
+                <!-- Content will be injected by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog/Articles Section -->
+    <section id="blog" class="blog">
+        <div class="container">
+            <h2 class="section-title" data-en="Latest Articles">מאמרים אחרונים</h2>
+            <p class="blog-subtitle" data-en="Thoughts, tutorials, and insights from my development journey">מחשבות, מדריכים ותובנות ממסע הפיתוח שלי</p>
+            
+            <div class="articles-grid">
+                <article class="article-card">
+                    <div class="article-image article-image-1">
+                        <span class="article-tag" data-en="Technical">טכני</span>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar"></i> <span data-en="January 2025">ינואר 2025</span></span>
+                            <span><i class="far fa-clock"></i> <span data-en="8 min read">8 דקות קריאה</span></span>
+                        </div>
+                        <h3 data-en="Building an AI-Powered ERP: Integrating Chatbot with Business Data">בניית ERP מבוסס AI: שילוב צ'אטבוט עם נתוני עסק</h3>
+                        <p data-en="How I integrated an intelligent chatbot into an ERP system using Node.js, MongoDB, and AI APIs. The chatbot analyzes business data in real-time, provides forecasts, and delivers insights to management in a simple, interactive way. Learn about the architecture, challenges with Socket.io for real-time updates, and implementing Cron Jobs for automated reports.">איך שילבתי צ'אטבוט חכם במערכת ERP באמצעות Node.js, MongoDB וממשקי AI. הצ'אטבוט מנתח נתונים עסקיים בזמן אמת, מספק תחזיות ומעביר תובנות למעסיק בצורה פשוטה ואינטראקטיבית. למד על הארכיטקטורה, האתגרים עם Socket.io לעדכונים בזמן אמת, ויישום Cron Jobs לדוחות אוטומטיים.</p>
+                        <a href="#" class="article-link" onclick="openArticleModal('erp'); return false;" data-en="Read More">קרא עוד <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="article-image article-image-2">
+                        <span class="article-tag" data-en="Case Study">מקרה בוחן</span>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar"></i> <span data-en="December 2024">דצמבר 2024</span></span>
+                            <span><i class="far fa-clock"></i> <span data-en="6 min read">6 דקות קריאה</span></span>
+                        </div>
+                        <h3 data-en="Optimizing Delivery Routes: ASP.NET & Geo-Algorithms">אופטימיזציה של מסלולי משלוחים: ASP.NET ואלגוריתמים גיאוגרפיים</h3>
+                        <p data-en="A deep dive into building an advanced delivery management system with ASP.NET MVC and Entity Framework. How I implemented automatic geographic division of deliveries, dynamic driver route allocation, and real-time status tracking using SQL Server. The system handles managers, drivers, and customers with different interfaces while generating comprehensive reports.">צלילה עמוקה לבניית מערכת ניהול משלוחים מתקדמת עם ASP.NET MVC ו-Entity Framework. איך יישמתי חלוקה גיאוגרפית אוטומטית של משלוחים, הקצאת קווי נהגים דינמית ומעקב סטטוס בזמן אמת באמצעות SQL Server. המערכת מטפלת במנהלים, נהגים ולקוחות עם ממשקים שונים תוך הפקת דוחות מקיפים.</p>
+                        <a href="#" class="article-link" onclick="openArticleModal('delivery'); return false;" data-en="Read More">קרא עוד <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="article-image article-image-3">
+                        <span class="article-tag" data-en="Tutorial">מדריך</span>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar"></i> <span data-en="November 2024">נובמבר 2024</span></span>
+                            <span><i class="far fa-clock"></i> <span data-en="7 min read">7 דקות קריאה</span></span>
+                        </div>
+                        <h3 data-en="From Monolith to Microservices: Restaurant Platform Journey">ממונוליט למיקרו-שירותים: מסע פלטפורמת המסעדות</h3>
+                        <p data-en="Building a dynamic restaurant ordering platform with React and Node.js. This article covers real-time table availability updates, order management, secure payment integration, and user authentication. Learn how I structured the MongoDB database for optimal performance, implemented WebSocket for live updates, and created an intuitive responsive interface that works seamlessly on all devices.">בניית פלטפורמת הזמנות דינמית למסעדות עם React ו-Node.js. המאמר מכסה עדכוני זמינות שולחנות בזמן אמת, ניהול הזמנות, אינטגרציית תשלומים מאובטחת ואימות משתמשים. למד איך מבניתי את מסד הנתונים MongoDB לביצועים אופטימליים, יישמתי WebSocket לעדכונים חיים, ויצרתי ממשק רספונסיבי אינטואיטיבי שעובד בצורה חלקה בכל המכשירים.</p>
+                        <a href="#" class="article-link" onclick="openArticleModal('restaurant'); return false;" data-en="Read More">קרא עוד <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hire Me CTA Section -->
+    <section class="hire-me-cta">
+        <div class="container">
+            <div class="cta-content">
+                <div class="cta-badge pulse" data-en="Available for Work">זמין לעבודה</div>
+                <h2 data-en="Let's Work Together!">בוא נעבוד ביחד!</h2>
+                <p data-en="I'm currently available for freelance projects and full-time opportunities. Let's create something amazing together!">אני כרגע זמין לפרויקטים פרילנס והזדמנויות Full-Time. בוא ניצור משהו מדהים ביחד!</p>
+                <div class="cta-stats">
+                    <div class="cta-stat">
+                        <span class="stat-icon">⚡</span>
+                        <span class="stat-value" data-en="Fast Response">תגובה מהירה</span>
+                        <span class="stat-label" data-en="Within 24 hours">תוך 24 שעות</span>
+                    </div>
+                    <div class="cta-stat">
+                        <span class="stat-icon">🎯</span>
+                        <span class="stat-value" data-en="Quality Work">עבודה איכותית</span>
+                        <span class="stat-label" data-en="100% Satisfaction">שביעות רצון 100%</span>
+                    </div>
+                    <div class="cta-stat">
+                        <span class="stat-icon">🚀</span>
+                        <span class="stat-value" data-en="On-Time Delivery">מסירה בזמן</span>
+                        <span class="stat-label" data-en="Always on schedule">תמיד לפי לוח זמנים</span>
+                    </div>
+                </div>
+                <a href="#contact" class="btn btn-hire" data-en="Hire Me Now">שכור אותי עכשיו</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title" data-en="Contact Me">צור קשר</h2>
+            <p class="contact-subtitle" data-en="Have a project or idea? Let's talk!">יש לך פרויקט או רעיון? בוא נדבר!</p>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h3 data-en="Email">אימייל</h3>
+                            <p>shayelisha2312@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h3 data-en="Phone">טלפון</h3>
+                            <p dir="ltr">053-717-1884</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3 data-en="Location">מיקום</h3>
+                            <p data-en="Tel Aviv, Israel">תל אביב, ישראל</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm" novalidate>
+                    <div class="form-group">
+                        <input type="text" id="name" class="form-input" placeholder="שם מלא" data-placeholder-en="Full Name" required minlength="2">
+                        <span class="form-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" class="form-input" placeholder="אימייל" data-placeholder-en="Email" required>
+                        <span class="form-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" class="form-input" placeholder="נושא" data-placeholder-en="Subject" required minlength="3">
+                        <span class="form-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" class="form-input" rows="5" placeholder="הודעה" data-placeholder-en="Message" required minlength="10"></textarea>
+                        <span class="form-error"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="submitBtn">
+                        <span class="btn-text" data-en="Send Message">שלח הודעה</span>
+                        <span class="btn-loader" style="display: none;"><i class="fas fa-spinner fa-spin"></i></span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p data-en="&copy; 2025 Shay Elisha. All rights reserved.">&copy; 2025 שי אלישע. כל הזכויות שמורות.</p>
+            <div class="footer-links">
+                <a href="https://github.com/ShayElisha" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/shay-elisha" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:shayelisha2312@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="tel:0537171884"><i class="fas fa-phone"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Easter Egg Message -->
+    <div id="easterEggMessage" class="easter-egg-message">
+        <div class="easter-egg-content">
+            <h2>🎉 מצאת את ה-Easter Egg! 🎉</h2>
+            <p>אתה יודע את הקומבינציה הסודית!</p>
+            <button onclick="closeEasterEgg()" class="btn btn-primary">סגור</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
