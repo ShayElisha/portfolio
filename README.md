@@ -8,7 +8,7 @@
 
 הנדסאי תוכנה בשנה האחרונה ללימודים במכללה למינהל, מתמחה בפיתוח Full Stack עם ניסיון בבניית מערכות מורכבות ואפליקציות ווב.
 
-**טכנולוגיות עיקריות:** JavaScript, TypeScript, React, Node.js, MongoDB, ASP.NET, Python
+**טכנולוגיות עיקריות:** JavaScript, TypeScript, React, Node.js, MongoDB, ASP.NET, Python,r
 
 ## ✨ תכונות
 

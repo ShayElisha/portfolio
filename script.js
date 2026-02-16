@@ -298,6 +298,89 @@ const projectData = {
             'מערכת אירועים אקראיים'
         ],
         technologies: ['Python', 'Tkinter', 'Pandas', 'Matplotlib', 'Git']
+    },
+    wedding: {
+        title: 'מערכת סידור הושבה והזמנות לחתונה',
+        titleEn: 'Wedding Seating & Invitations System',
+        description: 'מערכת ניהול חתונה מקיפה לסידור הושבה אוטומטי והזמנות דיגיטליות עם מעקב אחר תגובות אורחים.',
+        descriptionEn: 'Comprehensive wedding management system for automatic seating arrangements and digital invitations with guest response tracking.',
+        features: [
+            'סידור הושבה אוטומטי לפי קבוצות ומשפחות',
+            'מערכת הזמנות דיגיטליות עם RSVP',
+            'מעקב אחר תגובות אורחים בזמן אמת',
+            'ניהול רשימת אורחים מפורטת',
+            'ממשק גרפי אינטואיטיבי לסידור שולחנות',
+            'התראות ועדכונים אוטומטיים',
+            'ניהול תפריט והעדפות תזונתיות',
+            'דוחות וסטטיסטיקות על נוכחות'
+        ],
+        featuresEn: [
+            'Automatic seating arrangement by groups and families',
+            'Digital invitation system with RSVP',
+            'Real-time guest response tracking',
+            'Detailed guest list management',
+            'Intuitive graphical interface for table arrangement',
+            'Automatic notifications and updates',
+            'Menu management and dietary preferences',
+            'Attendance reports and statistics'
+        ],
+        technologies: ['React', 'Node.js', 'MongoDB', 'Express', 'Socket.io', 'JavaScript']
+    },
+    shifts: {
+        title: 'מערכת ניהול משמרות עובדים',
+        titleEn: 'Employee Shift Management System',
+        description: 'מערכת מתקדמת לתזמון משמרות והקצאת עובדים עם הקצאות אוטומטיות ומעקב אחר זמינות.',
+        descriptionEn: 'Advanced system for shift scheduling and employee allocation with automatic assignments and availability tracking.',
+        features: [
+            'תזמון משמרות אוטומטי וחכם',
+            'הקצאת עובדים לפי זמינות וכישורים',
+            'מערכת החלפות משמרות',
+            'מעקב אחר שעות עבודה ושכר',
+            'התראות על משמרות קרובות',
+            'ממשק למנהלים ולעובדים',
+            'דוחות שעות עבודה מפורטים',
+            'אינטגרציה עם מערכות שכר'
+        ],
+        featuresEn: [
+            'Smart automatic shift scheduling',
+            'Employee allocation by availability and skills',
+            'Shift swap system',
+            'Work hours and salary tracking',
+            'Notifications for upcoming shifts',
+            'Interface for managers and employees',
+            'Detailed work hours reports',
+            'Integration with payroll systems'
+        ],
+        technologies: ['React', 'Node.js', 'MongoDB', 'Socket.io', 'Express', 'JavaScript']
+    },
+    'employee-platform': {
+        title: 'פלטפורמה אינטרקטיבית לניהול עובדים',
+        titleEn: 'Interactive Employee Management Platform',
+        description: 'פלטפורמה מקיפה לכלל העובדים וההנהלה עם עדכונים בזמן אמת, כלי שיתוף פעולה ומעקב ביצועים.',
+        descriptionEn: 'Comprehensive platform for all employees and management with real-time updates, collaboration tools, and performance tracking.',
+        features: [
+            'ממשק מרכזי לכלל העובדים וההנהלה',
+            'עדכונים בזמן אמת על משימות ופרויקטים',
+            'מערכת הודעות ותקשורת פנימית',
+            'מעקב אחר ביצועים ומשוב',
+            'ניהול משימות ופרויקטים משותפים',
+            'לוח זמנים משותף ומשמרות',
+            'מערכת דוחות וסטטיסטיקות',
+            'אינטגרציה עם מערכות ניהול נוספות',
+            'ממשק ניהול למנהלים עם הרשאות'
+        ],
+        featuresEn: [
+            'Central interface for all employees and management',
+            'Real-time updates on tasks and projects',
+            'Internal messaging and communication system',
+            'Performance tracking and feedback',
+            'Task and collaborative project management',
+            'Shared calendar and shifts',
+            'Reports and statistics system',
+            'Integration with additional management systems',
+            'Management interface for managers with permissions'
+        ],
+        technologies: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Socket.io', 'Express', 'JWT']
     }
 };
 
@@ -308,19 +391,26 @@ function openProjectModal(projectId) {
     
     if (!project) return;
     
-    const featuresHTML = project.features.map(feature => `<li>${feature}</li>`).join('');
+    const isEnglish = currentLang === 'en';
+    const title = isEnglish && project.titleEn ? project.titleEn : project.title;
+    const description = isEnglish && project.descriptionEn ? project.descriptionEn : project.description;
+    const features = isEnglish && project.featuresEn ? project.featuresEn : project.features;
+    const featuresLabel = isEnglish ? 'Key Features:' : 'תכונות עיקריות:';
+    const techLabel = isEnglish ? 'Technologies:' : 'טכנולוגיות:';
+    
+    const featuresHTML = features.map(feature => `<li>${feature}</li>`).join('');
     const techHTML = project.technologies.map(tech => `<span class="tag">${tech}</span>`).join('');
     
     modalBody.innerHTML = `
-        <h2>${project.title}</h2>
-        <p>${project.description}</p>
+        <h2>${title}</h2>
+        <p>${description}</p>
         
-        <h3>תכונות עיקריות:</h3>
+        <h3>${featuresLabel}</h3>
         <ul>
             ${featuresHTML}
         </ul>
         
-        <h3>טכנולוגיות:</h3>
+        <h3>${techLabel}</h3>
         <div class="modal-tags">
             ${techHTML}
         </div>
