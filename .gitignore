@@ -1,6 +1,3 @@
-# EmailJS Configuration - Contains sensitive information
-config.js
-
 # Environment files
 .env
 .env.local
