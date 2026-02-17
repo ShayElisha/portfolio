@@ -46,25 +46,44 @@ backToTop.addEventListener('click', () => {
 // DARK MODE TOGGLE
 // =========================
 const darkModeToggle = document.getElementById('darkModeToggle');
+const darkModeToggleMobile = document.getElementById('darkModeToggleMobile');
 const body = document.body;
+
+// Function to update dark mode
+function updateDarkMode(isDark) {
+    if (isDark) {
+        body.classList.add('dark-mode');
+        localStorage.setItem('darkMode', 'enabled');
+        const icon = '<i class="fas fa-sun"></i>';
+        if (darkModeToggle) darkModeToggle.innerHTML = icon;
+        if (darkModeToggleMobile) darkModeToggleMobile.innerHTML = icon;
+    } else {
+        body.classList.remove('dark-mode');
+        localStorage.setItem('darkMode', null);
+        const icon = '<i class="fas fa-moon"></i>';
+        if (darkModeToggle) darkModeToggle.innerHTML = icon;
+        if (darkModeToggleMobile) darkModeToggleMobile.innerHTML = icon;
+    }
+}
 
 // Check for saved dark mode preference
 if (localStorage.getItem('darkMode') === 'enabled') {
-    body.classList.add('dark-mode');
-    darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    updateDarkMode(true);
 }
 
-darkModeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    
-    if (body.classList.contains('dark-mode')) {
-        localStorage.setItem('darkMode', 'enabled');
-        darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-    } else {
-        localStorage.setItem('darkMode', null);
-        darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-    }
-});
+// Desktop toggle
+if (darkModeToggle) {
+    darkModeToggle.addEventListener('click', () => {
+        updateDarkMode(!body.classList.contains('dark-mode'));
+    });
+}
+
+// Mobile toggle
+if (darkModeToggleMobile) {
+    darkModeToggleMobile.addEventListener('click', () => {
+        updateDarkMode(!body.classList.contains('dark-mode'));
+    });
+}
 
 // =========================
 // LIVE TYPING EFFECT
@@ -147,6 +166,16 @@ if (typeof particlesJS !== 'undefined') {
             color: {
                 value: '#6366f1'
             },
+            opacity: {
+                value: 0.5,
+                random: true,
+                anim: {
+                    enable: true,
+                    speed: 1,
+                    opacity_min: 0.3,
+                    sync: false
+                }
+            },
             shape: {
                 type: 'circle'
             },
@@ -168,7 +197,7 @@ if (typeof particlesJS !== 'undefined') {
                 enable: true,
                 distance: 150,
                 color: '#6366f1',
-                opacity: 0.4,
+                opacity: 0.6,
                 width: 1
             },
             move: {
@@ -641,84 +670,83 @@ function triggerConfetti() {
 // PDF RESUME DOWNLOAD
 // =========================
 const downloadCV = document.getElementById('downloadCV');
+const downloadCVMobile = document.getElementById('downloadCVMobile');
 
-downloadCV.addEventListener('click', () => {
-    generatePDF();
-});
+if (downloadCV) {
+    downloadCV.addEventListener('click', () => {
+        downloadCVFile();
+    });
+}
 
-function generatePDF() {
-    if (typeof html2pdf === 'undefined') {
-        alert('מצטער, אין אפשרות להוריד קו"ח כרגע');
-        return;
-    }
+if (downloadCVMobile) {
+    downloadCVMobile.addEventListener('click', () => {
+        downloadCVFile();
+    });
+}
+
+function downloadCVFile() {
+    // Create a temporary link element
+    const link = document.createElement('a');
+    const fileName = 'קורות חיים שי אלישע 27.pdf';
     
-    const resumeContent = `
-            <div style="font-family: Arial, sans-serif; padding: 40px; max-width: 800px; margin: 0 auto; direction: rtl;">
-            <h1 style="color: #6366f1; text-align: center; margin-bottom: 10px;">שי אלישע</h1>
-            <p style="text-align: center; color: #666; margin-bottom: 30px;">הנדסאי תוכנה | מפתח Full Stack</p>
+    // Use fetch to check if file exists, then download
+    fetch(fileName)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('File not found');
+            }
+            return response.blob();
+        })
+        .then(blob => {
+            // Create object URL from blob
+            const url = window.URL.createObjectURL(blob);
+            link.href = url;
+            link.download = fileName;
+            link.style.display = 'none';
             
-            <div style="margin-bottom: 30px;">
-                <h2 style="color: #6366f1; border-bottom: 2px solid #6366f1; padding-bottom: 5px;">פרטים אישיים</h2>
-                <p>📧 shayelisha2312@gmail.com</p>
-                <p>📞 053-717-1884</p>
-                <p>💻 GitHub: github.com/ShayElisha</p>
-                <p>🔗 LinkedIn: linkedin.com/in/shay-elisha</p>
-                <p>📍 ישראל</p>
-                <p>🎓 הנדסאי תוכנה - המכללה למינהל</p>
-            </div>
+            // Append to body, click, and remove
+            document.body.appendChild(link);
+            link.click();
             
-            <div style="margin-bottom: 30px;">
-                <h2 style="color: #6366f1; border-bottom: 2px solid #6366f1; padding-bottom: 5px;">אודותיי</h2>
-                <p style="line-height: 1.8;">שאפתן עם אהבה לטכנולוגיה, חדשנות ולשיפור תהליכי פיתוח. מנוסה בבניית מערכות ואפליקציות ווב מבוססות צד לקוח וצד שרת, תוך שימוש ב־JavaScript, TypeScript, React, Node.js ו־MongoDB.</p>
-            </div>
+            // Clean up
+            setTimeout(() => {
+                if (document.body.contains(link)) {
+                    document.body.removeChild(link);
+                }
+                window.URL.revokeObjectURL(url);
+            }, 100);
             
-            <div style="margin-bottom: 30px;">
-                <h2 style="color: #6366f1; border-bottom: 2px solid #6366f1; padding-bottom: 5px;">מיומנויות</h2>
-                <p><strong>שפות תכנות:</strong> JavaScript, TypeScript, Python, Java, C#, PHP</p>
-                <p><strong>צד לקוח:</strong> React.js, Angular, HTML5, CSS3, Tailwind CSS</p>
-                <p><strong>צד שרת:</strong> Node.js, Express.js, ASP.NET</p>
-                <p><strong>מסדי נתונים:</strong> MongoDB, MySQL, SQL Server, Firebase</p>
-            </div>
+            // Trigger confetti after download starts
+            setTimeout(() => {
+                triggerConfetti();
+            }, 300);
+        })
+        .catch(error => {
+            console.error('Error downloading CV:', error);
+            // Fallback: try direct link
+            link.href = fileName;
+            link.download = fileName;
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            setTimeout(() => {
+                if (document.body.contains(link)) {
+                    document.body.removeChild(link);
+                }
+            }, 100);
             
-            <div style="margin-bottom: 30px;">
-                <h2 style="color: #6366f1; border-bottom: 2px solid #6366f1; padding-bottom: 5px;">פרויקטים</h2>
-                <div style="margin-bottom: 15px;">
-                    <h3 style="color: #333;">מערכת ERP מודולרית</h3>
-                    <p>מערכת מקיפה לניהול תהליכים עסקיים עם AI chatbot</p>
-                    <p style="color: #666; font-size: 14px;">Node.js, Express, MongoDB, React, Socket.io</p>
-                </div>
-                <div style="margin-bottom: 15px;">
-                    <h3 style="color: #333;">מערכת ניהול משלוחים</h3>
-                    <p>מערכת לחברת שליחויות עם ממשקים למנהלים ונהגים</p>
-                    <p style="color: #666; font-size: 14px;">ASP.NET MVC, Entity Framework, SQL Server</p>
-                </div>
-            </div>
-        </div>
-    `;
-    
-    const opt = {
-        margin: 10,
-        filename: 'CV-Resume.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2 },
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-    };
-    
-    const element = document.createElement('div');
-    element.innerHTML = resumeContent;
-    
-    html2pdf().set(opt).from(element).save();
-    
-    // Trigger confetti after download starts
-    setTimeout(() => {
-        triggerConfetti();
-    }, 500);
+            // Trigger confetti
+            setTimeout(() => {
+                triggerConfetti();
+            }, 300);
+        });
 }
 
 // =========================
 // LANGUAGE SWITCHER
 // =========================
 const langToggle = document.getElementById('langToggle');
+const langToggleMobile = document.getElementById('langToggleMobile');
 let currentLang = 'he';
 
 // English translations for typing effect
@@ -746,7 +774,9 @@ function switchLanguage() {
         currentLang = 'en';
         document.documentElement.setAttribute('lang', 'en');
         document.documentElement.setAttribute('dir', 'ltr');
-        langToggle.querySelector('.lang-text').textContent = 'HE';
+        const langText = 'HE';
+        if (langToggle) langToggle.querySelector('.lang-text').textContent = langText;
+        if (langToggleMobile) langToggleMobile.querySelector('.lang-text').textContent = langText;
         
         // Update all elements with data-en attribute
         document.querySelectorAll('[data-en]').forEach(element => {
@@ -786,7 +816,9 @@ function switchLanguage() {
         currentLang = 'he';
         document.documentElement.setAttribute('lang', 'he');
         document.documentElement.setAttribute('dir', 'rtl');
-        langToggle.querySelector('.lang-text').textContent = 'EN';
+        const langText = 'EN';
+        if (langToggle) langToggle.querySelector('.lang-text').textContent = langText;
+        if (langToggleMobile) langToggleMobile.querySelector('.lang-text').textContent = langText;
         
         // Restore Hebrew text
         document.querySelectorAll('[data-he]').forEach(element => {
@@ -824,7 +856,12 @@ function switchLanguage() {
     localStorage.setItem('language', currentLang);
 }
 
-langToggle.addEventListener('click', switchLanguage);
+if (langToggle) {
+    langToggle.addEventListener('click', switchLanguage);
+}
+if (langToggleMobile) {
+    langToggleMobile.addEventListener('click', switchLanguage);
+}
 
 // Load saved language preference
 const savedLang = localStorage.getItem('language');
