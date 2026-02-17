@@ -436,6 +436,17 @@ document.addEventListener('keydown', (e) => {
 // =========================
 // CONTACT FORM VALIDATION
 // =========================
+// =========================
+// INITIALIZE EMAILJS
+// =========================
+(function() {
+    if (typeof EMAILJS_CONFIG !== 'undefined' && EMAILJS_CONFIG.PUBLIC_KEY) {
+        emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
+    } else {
+        console.error('EmailJS config not found! Make sure config.js exists and contains EMAILJS_CONFIG.');
+    }
+})();
+
 const contactForm = document.getElementById('contactForm');
 const nameInput = document.getElementById('name');
 const emailInput = document.getElementById('email');
@@ -512,25 +523,70 @@ contactForm.addEventListener('submit', (e) => {
         submitBtn.querySelector('.btn-loader').style.display = 'inline-flex';
         submitBtn.disabled = true;
         
-        // Simulate form submission
-        setTimeout(() => {
-            // Hide loading
+        // Prepare email data
+        const emailParams = {
+            from_name: nameInput.value,
+            from_email: emailInput.value,
+            subject: subjectInput.value,
+            message: messageInput.value,
+            to_email: 'shayelisha2312@gmail.com'
+        };
+        
+        // Send email using EmailJS
+        console.log('Sending email with params:', emailParams);
+        
+        if (typeof EMAILJS_CONFIG === 'undefined' || !EMAILJS_CONFIG.SERVICE_ID || !EMAILJS_CONFIG.TEMPLATE_ID) {
+            alert('EmailJS configuration not found! Please check config.js file.');
             submitBtn.querySelector('.btn-text').style.display = 'inline';
             submitBtn.querySelector('.btn-loader').style.display = 'none';
             submitBtn.disabled = false;
-            
-            // Trigger confetti
-            triggerConfetti();
-            
-            // Show success message
-            alert('הודעתך נשלחה בהצלחה! ✨');
-            
-            // Reset form
-            contactForm.reset();
-            document.querySelectorAll('.form-group').forEach(group => {
-                group.classList.remove('success', 'error');
+            return;
+        }
+        
+        emailjs.send(EMAILJS_CONFIG.SERVICE_ID, EMAILJS_CONFIG.TEMPLATE_ID, emailParams)
+            .then((response) => {
+                console.log('Email sent successfully!', response.status, response.text);
+                
+                // Hide loading
+                submitBtn.querySelector('.btn-text').style.display = 'inline';
+                submitBtn.querySelector('.btn-loader').style.display = 'none';
+                submitBtn.disabled = false;
+                
+                // Trigger confetti
+                triggerConfetti();
+                
+                // Show success message
+                const isEnglish = document.documentElement.lang === 'en';
+                alert(isEnglish ? 'Your message has been sent successfully! ✨' : 'הודעתך נשלחה בהצלחה! ✨');
+                
+                // Reset form
+                contactForm.reset();
+                document.querySelectorAll('.form-group').forEach(group => {
+                    group.classList.remove('success', 'error');
+                });
+            })
+            .catch((error) => {
+                // Hide loading
+                submitBtn.querySelector('.btn-text').style.display = 'inline';
+                submitBtn.querySelector('.btn-loader').style.display = 'none';
+                submitBtn.disabled = false;
+                
+                // Show error message with details
+                const isEnglish = document.documentElement.lang === 'en';
+                console.error('EmailJS Error Details:', error);
+                console.error('Error Status:', error.status);
+                console.error('Error Text:', error.text);
+                
+                let errorMessage = isEnglish 
+                    ? 'Sorry, there was an error sending your message. ' 
+                    : 'מצטער, אירעה שגיאה בשליחת ההודעה. ';
+                
+                if (error.text) {
+                    errorMessage += `\n${error.text}`;
+                }
+                
+                alert(errorMessage);
             });
-        }, 2000);
     }
 });
 
@@ -843,15 +899,9 @@ function highlightNavLink() {
 window.addEventListener('scroll', highlightNavLink);
 
 // =========================
-// PARALLAX EFFECT
+// PARALLAX EFFECT - DISABLED
 // =========================
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const parallax = document.querySelector('.hero');
-    if (parallax) {
-        parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
-    }
-});
+// Parallax effect removed - hero section should scroll normally
 
 // =========================
 // CURSOR GLOW EFFECT

@@ -2,13 +2,15 @@
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>הפורטפוליו שלי</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="config.js"></script>
 </head>
 <body>
     <!-- Loading Screen -->
@@ -145,12 +147,13 @@
                         <h4 data-en="College of Management">המכללה למינהל</h4>
                         <p data-en="Final year student in Software Engineering, with extensive specialization in software development and Full Stack technologies:">סטודנט בשנה האחרונה ללימודי הנדסאי תוכנה, עם התמחות רחבה בפיתוח תוכנה ובטכנולוגיות Full Stack:</p>
                         <ul>
-                            <li>פיתוח מערכות ווב ואפליקציות</li>
-                            <li>ניתוח מערכות מידע וניהול מסדי נתונים</li>
-                            <li>בדיקות תוכנה (QA) וניהול פרויקטים</li>
-                            <li>תכנון וניתוח מערכות מידע</li>
-                            <li>עקרונות בדיקות תוכנה</li>
-                            <li>ניהול יעיל של פרויקטים טכנולוגיים</li>
+                            <li data-en="Web systems and applications development">פיתוח מערכות ווב ואפליקציות</li>
+                            <li data-en="Information systems analysis and database management">ניתוח מערכות מידע וניהול מסדי נתונים</li>
+                            <li data-en="Software testing (QA) and project management">בדיקות תוכנה (QA) וניהול פרויקטים</li>
+                            <li data-en="Information systems planning and analysis">תכנון וניתוח מערכות מידע</li>
+                            <li data-en="Software testing principles">עקרונות בדיקות תוכנה</li>
+                            <li data-en="Efficient management of technological projects">ניהול יעיל של פרויקטים טכנולוגיים</li>
+                            <li data-en="Information security, cybersecurity and encryption">אבטחת מידע סייבר והצפנות</li>
                         </ul>
                     </div>
                 </div>
@@ -216,6 +219,25 @@
                         <span class="skill-tag">FTP</span>
                         <span class="skill-tag">SMTP</span>
                         <span class="skill-tag">UDP</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="category-title" data-en="Cybersecurity & Information Security"><i class="fas fa-shield-alt"></i> סייבר ואבטחת מידע</h3>
+                    <div class="skills-tags">
+                        <span class="skill-tag" data-en="Network Security">אבטחת רשתות</span>
+                        <span class="skill-tag" data-en="OSI Model">מודל OSI</span>
+                        <span class="skill-tag">TCP/IP</span>
+                        <span class="skill-tag">IPv4/IPv6</span>
+                        <span class="skill-tag">Wireshark</span>
+                        <span class="skill-tag" data-en="Penetration Testing">בדיקות חדירה</span>
+                        <span class="skill-tag">IPS/IDS</span>
+                        <span class="skill-tag" data-en="Firewall">חומת אש</span>
+                        <span class="skill-tag">AES</span>
+                        <span class="skill-tag">RSA</span>
+                        <span class="skill-tag">TLS</span>
+                        <span class="skill-tag">VPN</span>
+                        <span class="skill-tag" data-en="Cryptography">קריפטוגרפיה</span>
                     </div>
                 </div>
 
