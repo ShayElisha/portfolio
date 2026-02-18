@@ -2052,7 +2052,7 @@ body.dark-mode .timeline-content {
 }
 
 body.dark-mode .category-title {
-    color: var(--text-dark);
+    color: var(--text-light);
 }
 
 body.dark-mode .category-title i {
@@ -2071,6 +2071,185 @@ body.dark-mode .footer {
 
 body.dark-mode .skill-tag {
     background: rgba(99, 102, 241, 0.2);
+    border-color: rgba(99, 102, 241, 0.3);
+    color: var(--text-light);
+}
+
+body.dark-mode .about-info,
+body.dark-mode .info-item {
+    color: var(--text-light);
+}
+
+body.dark-mode .info-item i {
+    color: var(--primary-color);
+}
+
+body.dark-mode .social-link {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: rgba(99, 102, 241, 0.3);
+    color: var(--text-light);
+}
+
+body.dark-mode .social-link:hover {
+    background: var(--gradient);
+    color: white;
+}
+
+body.dark-mode .hero-subtitle {
+    color: var(--text-light);
+}
+
+body.dark-mode .tag {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: rgba(99, 102, 241, 0.3);
+    color: var(--text-light);
+}
+
+body.dark-mode .timeline-date {
+    color: var(--text-light);
+}
+
+body.dark-mode .timeline-dot {
+    border-color: rgba(30, 41, 59, 0.7);
+}
+
+body.dark-mode .timeline-content h3,
+body.dark-mode .timeline-content h4,
+body.dark-mode .timeline-content p,
+body.dark-mode .timeline-content li {
+    color: var(--text-light);
+}
+
+body.dark-mode .project-content h3,
+body.dark-mode .project-content p {
+    color: var(--text-light);
+}
+
+body.dark-mode .article-content p {
+    color: var(--text-light);
+}
+
+body.dark-mode .cta-content h2,
+body.dark-mode .cta-content p {
+    color: var(--text-light);
+}
+
+body.dark-mode .footer-links a {
+    color: var(--text-light);
+}
+
+body.dark-mode .footer-links a:hover {
+    color: var(--primary-color);
+}
+
+body.dark-mode .modal-content {
+    background: rgba(30, 41, 59, 0.95);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .modal-content h2,
+body.dark-mode .modal-content h3,
+body.dark-mode .modal-content p {
+    color: var(--text-light);
+}
+
+body.dark-mode .form-group label {
+    color: var(--text-light);
+}
+
+body.dark-mode .form-textarea {
+    background: rgba(15, 23, 42, 0.5);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-light);
+}
+
+body.dark-mode .btn-submit {
+    background: var(--gradient);
+    color: white;
+}
+
+body.dark-mode .back-to-top {
+    background: var(--gradient);
+    color: white;
+}
+
+body.dark-mode .loading-screen {
+    background: rgba(15, 23, 42, 0.95);
+}
+
+body.dark-mode .loader-text {
+    color: var(--text-light);
+}
+
+body.dark-mode .scroll-progress-bar {
+    background: var(--gradient);
+}
+
+body.dark-mode .stat-number,
+body.dark-mode .stat-label {
+    color: var(--text-light);
+}
+
+body.dark-mode .about-stats {
+    color: var(--text-light);
+}
+
+body.dark-mode .project-tags .tag,
+body.dark-mode .article-tags .tag {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: rgba(99, 102, 241, 0.3);
+    color: var(--text-light);
+}
+
+body.dark-mode .contact-item,
+body.dark-mode .contact-info {
+    color: var(--text-light);
+}
+
+body.dark-mode .contact-item i {
+    color: var(--primary-color);
+}
+
+body.dark-mode .cta-stats {
+    color: var(--text-light);
+}
+
+body.dark-mode .cta-badge {
+    color: var(--text-light);
+}
+
+body.dark-mode .skill-card h3,
+body.dark-mode .skill-card p {
+    color: var(--text-light);
+}
+
+body.dark-mode .about-text p {
+    color: var(--text-light);
+}
+
+body.dark-mode p,
+body.dark-mode span,
+body.dark-mode li {
+    color: var(--text-light);
+}
+
+body.dark-mode .btn {
+    color: white;
+}
+
+body.dark-mode .btn:hover {
+    color: white;
+}
+
+body.dark-mode .skill-category {
+    background: rgba(30, 41, 59, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .skill-category:hover {
+    box-shadow: 0 15px 50px rgba(99, 102, 241, 0.4);
     border-color: rgba(99, 102, 241, 0.3);
 }
 
