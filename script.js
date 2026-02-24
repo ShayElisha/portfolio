@@ -12,28 +12,52 @@ window.addEventListener('load', () => {
 });
 
 // =========================
+// THROTTLE FUNCTION FOR PERFORMANCE
+// =========================
+function throttle(func, limit) {
+    let inThrottle;
+    return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    }
+}
+
+// =========================
 // SCROLL PROGRESS BAR
 // =========================
-window.addEventListener('scroll', () => {
+const updateScrollProgress = throttle(() => {
     const scrollProgress = document.getElementById('scrollProgress');
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrollPercentage = (scrollTop / scrollHeight) * 100;
-    scrollProgress.style.width = scrollPercentage + '%';
-});
+    if (scrollProgress) {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrollPercentage = (scrollTop / scrollHeight) * 100;
+        scrollProgress.style.width = scrollPercentage + '%';
+    }
+}, 16); // ~60fps
+
+window.addEventListener('scroll', updateScrollProgress, { passive: true });
 
 // =========================
 // BACK TO TOP BUTTON
 // =========================
 const backToTop = document.getElementById('backToTop');
 
-window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 300) {
-        backToTop.classList.add('visible');
-    } else {
-        backToTop.classList.remove('visible');
+const updateBackToTop = throttle(() => {
+    if (backToTop) {
+        if (window.pageYOffset > 300) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
     }
-});
+}, 100);
+
+window.addEventListener('scroll', updateBackToTop, { passive: true });
 
 backToTop.addEventListener('click', () => {
     window.scrollTo({
@@ -157,10 +181,10 @@ if (typeof particlesJS !== 'undefined') {
     particlesJS('particles-js', {
         particles: {
             number: {
-                value: 80,
+                value: 50,
                 density: {
                     enable: true,
-                    value_area: 800
+                    value_area: 1000
                 }
             },
             color: {
@@ -195,9 +219,9 @@ if (typeof particlesJS !== 'undefined') {
             },
             line_linked: {
                 enable: true,
-                distance: 150,
+                distance: 200,
                 color: '#6366f1',
-                opacity: 0.6,
+                opacity: 0.4,
                 width: 1
             },
             move: {
@@ -904,7 +928,8 @@ function highlightNavLink() {
     });
 }
 
-window.addEventListener('scroll', highlightNavLink);
+const throttledHighlightNavLink = throttle(highlightNavLink, 100);
+window.addEventListener('scroll', throttledHighlightNavLink, { passive: true });
 
 // =========================
 // PARALLAX EFFECT - DISABLED
@@ -933,27 +958,40 @@ document.body.appendChild(cursorGlow);
 let mouseX = 0, mouseY = 0;
 let glowX = 0, glowY = 0;
 
-document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    cursorGlow.style.opacity = '1';
-});
-
-document.addEventListener('mouseleave', () => {
-    cursorGlow.style.opacity = '0';
-});
+let animationFrameId = null;
+let isAnimating = false;
 
 function animateCursorGlow() {
-    glowX += (mouseX - glowX) * 0.1;
-    glowY += (mouseY - glowY) * 0.1;
+    if (!isAnimating) return;
+    
+    glowX += (mouseX - glowX) * 0.15;
+    glowY += (mouseY - glowY) * 0.15;
     
     cursorGlow.style.left = glowX + 'px';
     cursorGlow.style.top = glowY + 'px';
     
-    requestAnimationFrame(animateCursorGlow);
+    animationFrameId = requestAnimationFrame(animateCursorGlow);
 }
 
-animateCursorGlow();
+document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    cursorGlow.style.opacity = '1';
+    
+    if (!isAnimating) {
+        isAnimating = true;
+        animateCursorGlow();
+    }
+}, { passive: true });
+
+document.addEventListener('mouseleave', () => {
+    cursorGlow.style.opacity = '0';
+    isAnimating = false;
+    if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+    }
+});
 
 // =========================
 // EASTER EGG - Konami Code
