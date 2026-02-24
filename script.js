@@ -470,6 +470,65 @@ const projectData = {
             'Nodemon 3.0.3',
             'MongoDB'
         ]
+    },
+    'booking-app': {
+        title: 'מערכת ניהול תורים',
+        titleEn: 'Booking Management System',
+        description: 'מערכת מתקדמת לניהול תורים לעסקים, בנויה ב-Angular 16 ומשולבת עם Firebase. המערכת מאפשרת לעסקים לנהל תורים, שירותים ועובדים, וללקוחות לקבוע תורים, לנהל את התורים שלהם ולכתוב ביקורות.',
+        descriptionEn: 'Advanced appointment booking system for businesses built with Angular 16 and integrated with Firebase. The system allows businesses to manage appointments, services and employees, and customers to book appointments, manage their appointments and write reviews.',
+        features: [
+            'ניהול תורים מתקדם עם סטטוסים: pending, confirmed, cancelled, completed',
+            'מערכת אימות משתמשים עם Firebase Authentication',
+            'ניהול עסקים - הוספה, עריכה, ניהול שירותים ועובדים',
+            'ניהול עובדים עם שעות עבודה ייחודיות לכל עובד',
+            'ניהול ימי חופש לעובדים עם אישור/דחייה',
+            'חישוב זמנים זמינים חכם לפי שעות פתיחה, תורים קיימים וימי חופש',
+            'לוח שנה אינטראקטיבי לצפייה בתורים',
+            'מערכת ביקורות עם דירוג 1-5 כוכבים',
+            'עסקים מועדפים וסטטיסטיקות למשתמשים',
+            'ניהול שירותים עם מחירים, משך זמן וקטגוריות',
+            'העלאת תמונות ל-Firebase Storage',
+            'ממשק מנהל מערכת לניהול כל העסקים',
+            'עיצוב רספונסיבי מלא עם תמיכה בעברית (RTL)',
+            'הודעות Toastr למשתמש',
+            'Route Guards להגנה על דפים לפי תפקיד',
+            'Change Detection Optimization לביצועים טובים'
+        ],
+        featuresEn: [
+            'Advanced appointment management with statuses: pending, confirmed, cancelled, completed',
+            'User authentication system with Firebase Authentication',
+            'Business management - add, edit, manage services and employees',
+            'Employee management with unique working hours per employee',
+            'Employee absence management with approval/rejection',
+            'Smart available time calculation based on opening hours, existing appointments and absences',
+            'Interactive calendar for viewing appointments',
+            'Review system with 1-5 star rating',
+            'Favorite businesses and statistics for users',
+            'Service management with prices, duration and categories',
+            'Image upload to Firebase Storage',
+            'Admin panel for managing all businesses',
+            'Fully responsive design with Hebrew (RTL) support',
+            'Toastr notifications for users',
+            'Route Guards for role-based page protection',
+            'Change Detection Optimization for better performance'
+        ],
+        technologies: [
+            'Angular 16.1',
+            'TypeScript 5.1',
+            'RxJS 7.8',
+            'Angular Material 16.2',
+            'Angular CDK 16.2',
+            'Firebase 11.8',
+            'Firebase Authentication',
+            'Cloud Firestore',
+            'Firebase Storage',
+            'angular-calendar 0.31',
+            'date-fns 4.1',
+            'flatpickr 4.6',
+            'ngx-toastr 19.0',
+            'Node.js v16+',
+            'Angular CLI 16.1'
+        ]
     }
 };
 
