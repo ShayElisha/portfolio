@@ -177,14 +177,16 @@ document.querySelectorAll('.nav-link').forEach(link => {
 // =========================
 // PARTICLES.JS INITIALIZATION
 // =========================
-if (typeof particlesJS !== 'undefined') {
+// Disable particles on mobile for better performance
+const shouldLoadParticles = window.innerWidth > 768 && typeof particlesJS !== 'undefined';
+if (shouldLoadParticles) {
     particlesJS('particles-js', {
         particles: {
             number: {
-                value: 50,
+                value: 40,
                 density: {
                     enable: true,
-                    value_area: 1000
+                    value_area: 1200
                 }
             },
             color: {
@@ -219,9 +221,9 @@ if (typeof particlesJS !== 'undefined') {
             },
             line_linked: {
                 enable: true,
-                distance: 200,
+                distance: 250,
                 color: '#6366f1',
-                opacity: 0.4,
+                opacity: 0.3,
                 width: 1
             },
             move: {
@@ -405,6 +407,69 @@ const projectData = {
             'Integration with payroll systems'
         ],
         technologies: ['React', 'Node.js', 'MongoDB', 'Socket.io', 'Express', 'JavaScript']
+    },
+    'ayalla-cosmetics': {
+        title: 'אתר Ayalla Cosmetics',
+        titleEn: 'Ayalla Cosmetics Website',
+        description: 'אתר Full Stack לעסק קוסמטיקה, הכולל מערכת קביעת תורים, טופס יצירת קשר, גלריה ותצוגת שירותים. הפרויקט מורכב מ-Frontend ב-React עם Vite ו-Backend ב-Node.js/Express.',
+        descriptionEn: 'Full-stack website for a cosmetics business, including appointment booking system, contact form, gallery, and services display. The project consists of React Frontend with Vite and Node.js/Express Backend.',
+        features: [
+            'עיצוב רספונסיבי מלא למובייל וטאבלט',
+            'מערכת קביעת תורים מתקדמת עם בחירת תאריך ושעה',
+            'טופס יצירת קשר עם ולידציה מלאה',
+            'גלריה אינטראקטיבית עם מסננים',
+            'תצוגת שירותים מפורטת (עיצוב גבות, הסרת שיער, חומצה היאלורונית, עיצוב שפתיים, טיפולי פנים)',
+            'אנימציות חלקות עם Framer Motion',
+            'שליחת אימיילים אוטומטית - אישור ללקוח והודעה למנהל',
+            'ולידציה בצד שרת עם Express Validator',
+            'תמיכה ב-MongoDB לניהול תורים ופניות',
+            'אבטחה בסיסית עם Helmet',
+            'CORS מוגדר לתמיכה ב-API',
+            'ממשק ניהול לתורים ופניות (Admin)',
+            'אפקט Parallax ברקע',
+            'כרטיס צף עם קישורים מהירים',
+            'עמוד אודות העסק',
+            'המלצות לקוחות (Testimonials)'
+        ],
+        featuresEn: [
+            'Fully responsive design for mobile and tablet',
+            'Advanced appointment booking system with date and time selection',
+            'Contact form with full validation',
+            'Interactive gallery with filters',
+            'Detailed services display (eyebrow design, hair removal, hyaluronic acid, lip design, facial treatments)',
+            'Smooth animations with Framer Motion',
+            'Automatic email sending - confirmation to client and notification to manager',
+            'Server-side validation with Express Validator',
+            'MongoDB support for managing appointments and inquiries',
+            'Basic security with Helmet',
+            'CORS configured for API support',
+            'Admin interface for appointments and inquiries',
+            'Parallax background effect',
+            'Floating card with quick links',
+            'About the business page',
+            'Customer testimonials'
+        ],
+        technologies: [
+            'React 18.3.1',
+            'Vite 5.1.4',
+            'React Router DOM 6.22.0',
+            'Framer Motion 11.0.5',
+            'Tailwind CSS 3.4.1',
+            'Axios 1.6.7',
+            'React Icons 5.0.1',
+            'React Intersection Observer 9.8.1',
+            'Node.js',
+            'Express 4.18.2',
+            'Mongoose 8.1.1',
+            'Nodemailer 6.9.9',
+            'Express Validator 7.0.1',
+            'Helmet 7.1.0',
+            'CORS 2.8.5',
+            'Body Parser 1.20.2',
+            'Dotenv 16.4.1',
+            'Nodemon 3.0.3',
+            'MongoDB'
+        ]
     }
 };
 
@@ -865,29 +930,41 @@ if (savedLang === 'en') {
 }
 
 // =========================
-// SCROLL ANIMATIONS
+// SCROLL ANIMATIONS - Optimized
 // =========================
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-};
+// Disable scroll animations on mobile for better performance
+const isMobile = window.innerWidth <= 768;
+if (!isMobile) {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                entry.target.style.willChange = 'auto';
+            }
+        });
+    }, observerOptions);
+
+    // Observe all sections
+    document.querySelectorAll('section').forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(30px)';
+        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        section.style.willChange = 'opacity, transform';
+        observer.observe(section);
     });
-}, observerOptions);
-
-// Observe all sections
-document.querySelectorAll('section').forEach(section => {
-    section.style.opacity = '0';
-    section.style.transform = 'translateY(30px)';
-    section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-    observer.observe(section);
-});
+} else {
+    // On mobile, just set opacity to 1 immediately
+    document.querySelectorAll('section').forEach(section => {
+        section.style.opacity = '1';
+        section.style.transform = 'none';
+    });
+}
 
 // =========================
 // SMOOTH SCROLL FOR NAVIGATION
