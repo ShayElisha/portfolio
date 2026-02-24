@@ -381,35 +381,6 @@ const projectData = {
             'Integration with payroll systems'
         ],
         technologies: ['React', 'Node.js', 'MongoDB', 'Socket.io', 'Express', 'JavaScript']
-    },
-    'employee-platform': {
-        title: 'פלטפורמה אינטרקטיבית לניהול עובדים',
-        titleEn: 'Interactive Employee Management Platform',
-        description: 'פלטפורמה מקיפה לכלל העובדים וההנהלה עם עדכונים בזמן אמת, כלי שיתוף פעולה ומעקב ביצועים.',
-        descriptionEn: 'Comprehensive platform for all employees and management with real-time updates, collaboration tools, and performance tracking.',
-        features: [
-            'ממשק מרכזי לכלל העובדים וההנהלה',
-            'עדכונים בזמן אמת על משימות ופרויקטים',
-            'מערכת הודעות ותקשורת פנימית',
-            'מעקב אחר ביצועים ומשוב',
-            'ניהול משימות ופרויקטים משותפים',
-            'לוח זמנים משותף ומשמרות',
-            'מערכת דוחות וסטטיסטיקות',
-            'אינטגרציה עם מערכות ניהול נוספות',
-            'ממשק ניהול למנהלים עם הרשאות'
-        ],
-        featuresEn: [
-            'Central interface for all employees and management',
-            'Real-time updates on tasks and projects',
-            'Internal messaging and communication system',
-            'Performance tracking and feedback',
-            'Task and collaborative project management',
-            'Shared calendar and shifts',
-            'Reports and statistics system',
-            'Integration with additional management systems',
-            'Management interface for managers with permissions'
-        ],
-        technologies: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Socket.io', 'Express', 'JWT']
     }
 };
 

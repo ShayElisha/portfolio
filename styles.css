@@ -1203,10 +1203,6 @@ body::before {
     background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
 }
 
-.project-image-7 {
-    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-}
-
 .project-overlay {
     position: absolute;
     inset: 0;
