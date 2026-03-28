@@ -27,20 +27,23 @@ function throttle(func, limit) {
     }
 }
 
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 // =========================
 // SCROLL PROGRESS BAR
 // =========================
 const updateScrollProgress = throttle(() => {
     const scrollProgress = document.getElementById('scrollProgress');
-    if (scrollProgress) {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrollPercentage = (scrollTop / scrollHeight) * 100;
-        scrollProgress.style.width = scrollPercentage + '%';
-    }
-}, 16); // ~60fps
+    const fill = scrollProgress?.querySelector('.scroll-progress-bar-fill');
+    if (!fill) return;
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const ratio = scrollHeight > 0 ? scrollTop / scrollHeight : 0;
+    fill.style.transform = `scaleX(${Math.min(1, Math.max(0, ratio))})`;
+}, 24);
 
 window.addEventListener('scroll', updateScrollProgress, { passive: true });
+window.addEventListener('load', updateScrollProgress);
 
 // =========================
 // BACK TO TOP BUTTON
@@ -177,43 +180,36 @@ document.querySelectorAll('.nav-link').forEach(link => {
 // =========================
 // PARTICLES.JS INITIALIZATION
 // =========================
-// Disable particles on mobile for better performance
-const shouldLoadParticles = window.innerWidth > 768 && typeof particlesJS !== 'undefined';
+// Particles: desktop only, respect reduced motion, lighter config
+const shouldLoadParticles =
+    !prefersReducedMotion &&
+    window.innerWidth > 768 &&
+    typeof particlesJS !== 'undefined';
 if (shouldLoadParticles) {
     particlesJS('particles-js', {
         particles: {
             number: {
-                value: 40,
+                value: 22,
                 density: {
                     enable: true,
-                    value_area: 1200
+                    value_area: 1400
                 }
             },
             color: {
                 value: '#6366f1'
             },
-            opacity: {
-                value: 0.5,
-                random: true,
-                anim: {
-                    enable: true,
-                    speed: 1,
-                    opacity_min: 0.3,
-                    sync: false
-                }
-            },
             shape: {
                 type: 'circle'
             },
             opacity: {
-                value: 0.5,
+                value: 0.45,
                 random: false,
                 anim: {
                     enable: false
                 }
             },
             size: {
-                value: 3,
+                value: 2,
                 random: true,
                 anim: {
                     enable: false
@@ -221,14 +217,14 @@ if (shouldLoadParticles) {
             },
             line_linked: {
                 enable: true,
-                distance: 250,
+                distance: 160,
                 color: '#6366f1',
-                opacity: 0.3,
+                opacity: 0.22,
                 width: 1
             },
             move: {
                 enable: true,
-                speed: 2,
+                speed: 1,
                 direction: 'none',
                 random: false,
                 straight: false,
@@ -240,22 +236,22 @@ if (shouldLoadParticles) {
             detect_on: 'canvas',
             events: {
                 onhover: {
-                    enable: true,
+                    enable: false,
                     mode: 'repulse'
                 },
                 onclick: {
-                    enable: true,
+                    enable: false,
                     mode: 'push'
                 },
                 resize: true
             },
             modes: {
                 repulse: {
-                    distance: 100,
+                    distance: 80,
                     duration: 0.4
                 },
                 push: {
-                    particles_nb: 4
+                    particles_nb: 2
                 }
             }
         },
@@ -267,10 +263,11 @@ if (shouldLoadParticles) {
 // CREATE SIMPLE PARTICLES FALLBACK
 // =========================
 function createParticles() {
+    if (prefersReducedMotion || window.innerWidth <= 768) return;
     const particlesContainer = document.getElementById('particles');
     if (!particlesContainer) return;
-    
-    const particleCount = 50;
+
+    const particleCount = 16;
 
     for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
@@ -991,9 +988,9 @@ if (savedLang === 'en') {
 // =========================
 // SCROLL ANIMATIONS - Optimized
 // =========================
-// Disable scroll animations on mobile for better performance
+// Disable scroll animations on mobile / reduced motion
 const isMobile = window.innerWidth <= 768;
-if (!isMobile) {
+if (!isMobile && !prefersReducedMotion) {
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -100px 0px'
@@ -1018,7 +1015,6 @@ if (!isMobile) {
         observer.observe(section);
     });
 } else {
-    // On mobile, just set opacity to 1 immediately
     document.querySelectorAll('section').forEach(section => {
         section.style.opacity = '1';
         section.style.transform = 'none';
@@ -1043,29 +1039,44 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // =========================
-// ACTIVE NAV LINK HIGHLIGHT
+// ACTIVE NAV LINK HIGHLIGHT (IntersectionObserver — no scroll layout thrash)
 // =========================
 const sections = document.querySelectorAll('section[id]');
+const navLinkById = new Map();
+sections.forEach(section => {
+    const id = section.getAttribute('id');
+    if (!id) return;
+    const link = document.querySelector(`.nav-link[href="#${CSS.escape(id)}"]`);
+    if (link) navLinkById.set(id, link);
+});
 
-function highlightNavLink() {
-    const scrollY = window.pageYOffset;
-
-    sections.forEach(section => {
-        const sectionHeight = section.offsetHeight;
-        const sectionTop = section.offsetTop - 100;
-        const sectionId = section.getAttribute('id');
-        const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
-
-        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-            navLink?.classList.add('active');
-        } else {
-            navLink?.classList.remove('active');
-        }
-    });
+function setActiveNavById(id) {
+    navLinkById.forEach(l => l.classList.remove('active'));
+    const link = navLinkById.get(id);
+    if (link) link.classList.add('active');
 }
 
-const throttledHighlightNavLink = throttle(highlightNavLink, 100);
-window.addEventListener('scroll', throttledHighlightNavLink, { passive: true });
+if (sections.length && navLinkById.size) {
+    const navSectionObserver = new IntersectionObserver(
+        entries => {
+            const visible = entries.filter(e => e.isIntersecting);
+            if (!visible.length) return;
+            visible.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+            const id = visible[0].target.getAttribute('id');
+            if (id) setActiveNavById(id);
+        },
+        {
+            root: null,
+            rootMargin: '-80px 0px -48% 0px',
+            threshold: [0, 0.15, 0.35, 0.55, 0.75, 1]
+        }
+    );
+    sections.forEach(section => navSectionObserver.observe(section));
+    requestAnimationFrame(() => {
+        const firstId = sections[0].getAttribute('id');
+        if (firstId) setActiveNavById(firstId);
+    });
+}
 
 // =========================
 // PARALLAX EFFECT - DISABLED
@@ -1073,61 +1084,71 @@ window.addEventListener('scroll', throttledHighlightNavLink, { passive: true });
 // Parallax effect removed - hero section should scroll normally
 
 // =========================
-// CURSOR GLOW EFFECT
+// CURSOR GLOW EFFECT (no CSS filter — compositor-friendly)
 // =========================
-const cursorGlow = document.createElement('div');
-cursorGlow.style.cssText = `
-    position: fixed;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    transition: opacity 0.3s ease;
-    z-index: 9999;
-    opacity: 0;
-    filter: blur(40px);
-`;
-document.body.appendChild(cursorGlow);
+const enableCursorGlow =
+    !prefersReducedMotion && window.matchMedia('(min-width: 769px)').matches;
 
-let mouseX = 0, mouseY = 0;
-let glowX = 0, glowY = 0;
+if (enableCursorGlow) {
+    const cursorGlow = document.createElement('div');
+    cursorGlow.className = 'cursor-glow-follow';
+    cursorGlow.style.cssText = `
+        position: fixed;
+        width: 420px;
+        height: 420px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, rgba(99, 102, 241, 0.04) 35%, transparent 68%);
+        pointer-events: none;
+        transform: translate3d(-50%, -50%, 0);
+        transition: opacity 0.3s ease;
+        z-index: 9999;
+        opacity: 0;
+    `;
+    document.body.appendChild(cursorGlow);
 
-let animationFrameId = null;
-let isAnimating = false;
+    let mouseX = 0;
+    let mouseY = 0;
+    let glowX = 0;
+    let glowY = 0;
+    let animationFrameId = null;
+    let isAnimating = false;
 
-function animateCursorGlow() {
-    if (!isAnimating) return;
-    
-    glowX += (mouseX - glowX) * 0.15;
-    glowY += (mouseY - glowY) * 0.15;
-    
-    cursorGlow.style.left = glowX + 'px';
-    cursorGlow.style.top = glowY + 'px';
-    
-    animationFrameId = requestAnimationFrame(animateCursorGlow);
+    function animateCursorGlow() {
+        if (!isAnimating) return;
+
+        glowX += (mouseX - glowX) * 0.12;
+        glowY += (mouseY - glowY) * 0.12;
+
+        cursorGlow.style.left = `${glowX}px`;
+        cursorGlow.style.top = `${glowY}px`;
+
+        animationFrameId = requestAnimationFrame(animateCursorGlow);
+    }
+
+    document.addEventListener(
+        'mousemove',
+        e => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursorGlow.style.opacity = '1';
+
+            if (!isAnimating) {
+                isAnimating = true;
+                animateCursorGlow();
+            }
+        },
+        { passive: true }
+    );
+
+    document.addEventListener('mouseleave', () => {
+        cursorGlow.style.opacity = '0';
+        isAnimating = false;
+        if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
+        }
+    });
 }
-
-document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    cursorGlow.style.opacity = '1';
-    
-    if (!isAnimating) {
-        isAnimating = true;
-        animateCursorGlow();
-    }
-}, { passive: true });
-
-document.addEventListener('mouseleave', () => {
-    cursorGlow.style.opacity = '0';
-    isAnimating = false;
-    if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-        animationFrameId = null;
-    }
-});
 
 // =========================
 // EASTER EGG - Konami Code

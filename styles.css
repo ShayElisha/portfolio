@@ -40,6 +40,20 @@ html, body {
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
     }
+
+    .hero::before,
+    .hero::after {
+        animation: none !important;
+    }
+
+    .profile-pic {
+        animation: none !important;
+    }
+
+    #particles-js,
+    .particles {
+        display: none !important;
+    }
 }
 
 /* Ensure images and media don't overflow */
@@ -178,15 +192,13 @@ body::before {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     z-index: 1000;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    /* Performance optimization */
-    will-change: transform;
     transform: translateZ(0);
 }
 
@@ -283,7 +295,7 @@ body::before {
     background: 
         radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
-    animation: rotate 30s linear infinite;
+    animation: heroAmbientPulse 16s ease-in-out infinite;
 }
 
 .hero::after {
@@ -294,7 +306,7 @@ body::before {
     width: 600px;
     height: 600px;
     background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
-    filter: blur(80px);
+    filter: blur(42px);
     animation: pulse 8s ease-in-out infinite;
     transform: translate(-50%, -50%);
 }
@@ -302,6 +314,11 @@ body::before {
 @keyframes rotate {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
+}
+
+@keyframes heroAmbientPulse {
+    0%, 100% { opacity: 0.75; }
+    50% { opacity: 1; }
 }
 
 @keyframes pulse {
@@ -417,7 +434,7 @@ body::before {
 
 .btn-secondary {
     background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(6px);
     color: var(--primary-color);
     border: 2px solid transparent;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
@@ -458,7 +475,7 @@ body::before {
     justify-content: center;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(6px);
     color: var(--primary-color);
     text-decoration: none;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -513,7 +530,7 @@ body::before {
     box-shadow: 
         0 30px 80px rgba(99, 102, 241, 0.4),
         0 0 60px rgba(139, 92, 246, 0.3);
-    animation: float 3s ease-in-out infinite, rotate-border 10s linear infinite;
+    animation: float 3s ease-in-out infinite;
     position: relative;
 }
 
@@ -548,8 +565,8 @@ body::before {
         transparent 360deg
     );
     opacity: 0.3;
-    filter: blur(30px);
-    animation: rotate-border 8s linear infinite reverse;
+    filter: blur(16px);
+    animation: none;
 }
 
 @keyframes float {
@@ -629,7 +646,7 @@ body::before {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: blur(20px);
+    filter: blur(12px);
     opacity: 0.3;
     z-index: -1;
 }
@@ -701,7 +718,7 @@ body::before {
     height: 500px;
     background: radial-gradient(circle, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
     border-radius: 50%;
-    filter: blur(60px);
+    filter: blur(32px);
     pointer-events: none;
     z-index: 0;
 }
@@ -715,7 +732,7 @@ body::before {
     height: 400px;
     background: radial-gradient(circle, rgba(236, 72, 153, 0.05) 0%, transparent 70%);
     border-radius: 50%;
-    filter: blur(60px);
+    filter: blur(32px);
     pointer-events: none;
     z-index: 0;
 }
@@ -801,7 +818,7 @@ body::before {
 
 .about-text {
     background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(6px);
     padding: 3rem;
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.5);
@@ -954,7 +971,7 @@ body::before {
     width: 200%;
     height: 200%;
     background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
-    animation: rotate 10s linear infinite;
+    animation: heroAmbientPulse 12s ease-in-out infinite;
 }
 
 .stat-card:hover {
@@ -1001,7 +1018,7 @@ body::before {
     height: 800px;
     background: radial-gradient(circle, rgba(139, 92, 246, 0.05) 0%, transparent 70%);
     border-radius: 50%;
-    filter: blur(80px);
+    filter: blur(42px);
 }
 
 .skills-grid {
@@ -1014,7 +1031,7 @@ body::before {
 
 .skill-card {
     background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(6px);
     padding: 2.5rem;
     border-radius: 20px;
     box-shadow: 
@@ -1144,7 +1161,7 @@ body::before {
     height: 600px;
     background: radial-gradient(circle, rgba(236, 72, 153, 0.06) 0%, transparent 70%);
     border-radius: 50%;
-    filter: blur(80px);
+    filter: blur(42px);
 }
 
 .projects::after {
@@ -1156,7 +1173,7 @@ body::before {
     height: 600px;
     background: radial-gradient(circle, rgba(99, 102, 241, 0.06) 0%, transparent 70%);
     border-radius: 50%;
-    filter: blur(80px);
+    filter: blur(42px);
 }
 
 .projects-grid {
@@ -1170,7 +1187,7 @@ body::before {
 
 .project-card {
     background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(6px);
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 
@@ -1401,7 +1418,7 @@ body::before {
     height: 1000px;
     background: radial-gradient(circle, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
     border-radius: 50%;
-    filter: blur(100px);
+    filter: blur(48px);
 }
 
 .contact-subtitle {
@@ -1482,7 +1499,7 @@ body::before {
 
 .contact-form {
     background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(6px);
     padding: 3rem;
     border-radius: 20px;
     box-shadow: 
@@ -1504,7 +1521,7 @@ body::before {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     font-family: inherit;
     background: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(6px);
 }
 
 .form-input:focus {
@@ -1711,8 +1728,8 @@ body::before {
         -webkit-backdrop-filter: blur(5px);
     }
     
-    .cursorGlow {
-        display: none;
+    .cursor-glow-follow {
+        display: none !important;
     }
     
     /* Disable particles on mobile */
@@ -2024,19 +2041,28 @@ html {
     50% { opacity: 0.5; }
 }
 
-/* Scroll Progress Bar */
+/* Scroll Progress Bar — transform avoids layout thrash on scroll */
 .scroll-progress-bar {
     position: fixed;
     top: 0;
     left: 0;
+    right: 0;
     height: 4px;
-    background: var(--gradient);
-    width: 0%;
+    width: 100%;
     z-index: 10000;
-    transition: width 0.1s ease;
-    box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
-    will-change: width;
+    background: transparent;
+    pointer-events: none;
     transform: translateZ(0);
+}
+
+.scroll-progress-bar-fill {
+    height: 100%;
+    width: 100%;
+    background: var(--gradient);
+    transform-origin: left center;
+    transform: scaleX(0);
+    will-change: transform;
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
 }
 
 /* Back to Top Button */
@@ -2144,7 +2170,8 @@ body.dark-mode {
 body.dark-mode .navbar {
     background: rgba(15, 23, 42, 0.95);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px) saturate(120%);
+    -webkit-backdrop-filter: blur(12px) saturate(120%);
 }
 
 body.dark-mode .nav-brand {
@@ -2335,7 +2362,7 @@ body.dark-mode .loader-text {
     color: var(--text-light);
 }
 
-body.dark-mode .scroll-progress-bar {
+body.dark-mode .scroll-progress-bar-fill {
     background: var(--gradient);
 }
 
@@ -2397,7 +2424,7 @@ body.dark-mode .btn:hover {
 
 body.dark-mode .skill-category {
     background: rgba(30, 41, 59, 0.8);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(6px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 }
@@ -2775,7 +2802,7 @@ body.dark-mode .hero-buttons .btn:hover {
 .timeline-content {
     margin-right: 60px;
     background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(6px);
     padding: 2rem;
     border-radius: 20px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
@@ -2847,7 +2874,7 @@ body.dark-mode .hero-buttons .btn:hover {
 
 .skill-category {
     background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(6px);
     padding: 2rem;
     border-radius: 20px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
@@ -3112,7 +3139,7 @@ body.dark-mode #particles-js {
 
 .article-card {
     background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(6px);
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
@@ -3472,7 +3499,7 @@ body.dark-mode #particles-js {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.9);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(6px);
     display: none;
     align-items: center;
     justify-content: center;
@@ -3637,7 +3664,8 @@ body.dark-mode .cta-badge {
     /* Additional responsive improvements */
     .nav-menu {
         background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(20px);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
     }
 
     .hero-buttons {
@@ -3896,7 +3924,7 @@ body.dark-mode .cta-badge {
         overflow-wrap: break-word !important;
         display: block !important;
         background: rgba(255, 255, 255, 0.9) !important;
-        backdrop-filter: blur(10px) !important;
+        backdrop-filter: blur(6px) !important;
         border-radius: 20px !important;
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1) !important;
         border: 1px solid rgba(255, 255, 255, 0.5) !important;
