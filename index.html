@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>הפורטפוליו שלי</title>
+    <meta name="description" content="שי אלישע — מפתח Full Stack. בניית מערכות ווב מודרניות עם React, Node.js ו-MongoDB.">
+    <title>שי אלישע | Full Stack Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
@@ -16,11 +20,14 @@
     <!-- Loading Screen -->
     <div id="loading-screen" class="loading-screen">
         <div class="loader-content">
+            <div class="loader-mark" aria-hidden="true">SE</div>
             <div class="loader"></div>
             <h2 class="loader-text">טוען...</h2>
         </div>
     </div>
 
+    <!-- Ambient mesh -->
+    <div class="ambient-mesh" aria-hidden="true"></div>
     <!-- Animated Background Particles -->
     <div class="particles" id="particles"></div>
     <div id="particles-js"></div>
@@ -33,7 +40,7 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-            <div class="nav-brand">Portfolio</div>
+            <a href="#home" class="nav-brand" data-en="Shay Elisha">שי אלישע</a>
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link" data-en="Home">בית</a></li>
                 <li><a href="#about" class="nav-link" data-en="About">אודות</a></li>
@@ -84,30 +91,43 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title" data-en="Hello, I'm"><span data-en-start="Hello, I'm ">שלום, אני </span><span class="highlight" id="dynamicName">שי אלישע</span></h1>
-            <p class="hero-subtitle" id="typingText">
-                <span class="typing-cursor"></span>
-            </p>
-            <div class="hero-buttons">
-                <a href="#projects" class="btn btn-primary" data-en="My Projects">הפרויקטים שלי</a>
-                <a href="#contact" class="btn btn-secondary" data-en="Contact Me">צור קשר</a>
+        <div class="hero-inner">
+            <div class="hero-content">
+                <p class="hero-eyebrow" data-en="Full Stack Developer · Software Engineer">מפתח Full Stack · הנדסאי תוכנה</p>
+                <h1 class="hero-title">
+                    <span class="hero-greeting" data-en-start="Hello, I'm ">שלום, אני </span>
+                    <span class="highlight" id="dynamicName">שי אלישע</span>
+                </h1>
+                <p class="hero-subtitle" id="typingText">
+                    <span class="typing-cursor"></span>
+                </p>
+                <p class="hero-lead" data-en="I design and build modern web systems — from polished interfaces to solid backends.">בונה מערכות ווב מודרניות — מממשקים מדויקים ועד שרתים יציבים.</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary" data-en="View Projects">צפה בפרויקטים</a>
+                    <a href="#contact" class="btn btn-secondary" data-en="Get in Touch">צור קשר</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/ShayElisha" target="_blank" class="social-link" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/shay-elisha" target="_blank" class="social-link" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:shayelisha2312@gmail.com" class="social-link" title="Email" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
             </div>
-            <div class="social-links">
-                <a href="https://github.com/ShayElisha" target="_blank" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/shay-elisha" target="_blank" class="social-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="https://twitter.com" target="_blank" class="social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="mailto:shayelisha2312@gmail.com" class="social-link" title="Email"><i class="fas fa-envelope"></i></a>
+            <div class="hero-image">
+                <div class="profile-frame">
+                    <div class="profile-pic" aria-hidden="true"></div>
+                    <div class="profile-ring" aria-hidden="true"></div>
+                </div>
             </div>
         </div>
-        <div class="hero-image">
-            <div class="profile-pic"></div>
+        <div class="hero-scroll" aria-hidden="true">
+            <span></span>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
+            <p class="section-eyebrow" data-en="Introduction">היכרות</p>
             <h2 class="section-title" data-en="About Me">אודותיי</h2>
             <div class="about-content">
                 <div class="about-text">
@@ -153,6 +173,7 @@
     <!-- Education Timeline Section -->
     <section id="education" class="education">
         <div class="container">
+            <p class="section-eyebrow" data-en="Background">רקע</p>
             <h2 class="section-title" data-en="My Education">ההשכלה שלי</h2>
             <div class="timeline">
                 <div class="timeline-item">
@@ -180,6 +201,7 @@
     <!-- Skills Section -->
     <section id="skills" class="skills">
         <div class="container">
+            <p class="section-eyebrow" data-en="Toolkit">ארגז כלים</p>
             <h2 class="section-title" data-en="My Skills">המיומנויות שלי</h2>
             
             <div class="skills-categories">
@@ -286,6 +308,7 @@
     <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="container">
+            <p class="section-eyebrow" data-en="Selected Work">עבודות נבחרות</p>
             <h2 class="section-title" data-en="My Projects">הפרויקטים שלי</h2>
             <div class="projects-grid">
                 <!-- Project 1: ERP System -->
@@ -504,6 +527,7 @@
     <!-- Blog/Articles Section -->
     <section id="blog" class="blog">
         <div class="container">
+            <p class="section-eyebrow" data-en="Writing">כתיבה</p>
             <h2 class="section-title" data-en="Latest Articles">מאמרים אחרונים</h2>
             <p class="blog-subtitle" data-en="Thoughts, tutorials, and insights from my development journey">מחשבות, מדריכים ותובנות ממסע הפיתוח שלי</p>
             
@@ -561,26 +585,23 @@
         <div class="container">
             <div class="cta-content">
                 <div class="cta-badge pulse" data-en="Available for Work">זמין לעבודה</div>
-                <h2 data-en="Let's Work Together!">בוא נעבוד ביחד!</h2>
-                <p data-en="I'm currently available for freelance projects and full-time opportunities. Let's create something amazing together!">אני כרגע זמין לפרויקטים פרילנס והזדמנויות Full-Time. בוא ניצור משהו מדהים ביחד!</p>
+                <h2 data-en="Let's build something solid">בוא נבנה משהו מדויק</h2>
+                <p data-en="Available for freelance projects and full-time roles. Clear communication, clean code, and reliable delivery.">זמין לפרויקטי פרילנס ולמשרות Full-Time. תקשורת ברורה, קוד נקי ומסירה אמינה.</p>
                 <div class="cta-stats">
                     <div class="cta-stat">
-                        <span class="stat-icon">⚡</span>
                         <span class="stat-value" data-en="Fast Response">תגובה מהירה</span>
                         <span class="stat-label" data-en="Within 24 hours">תוך 24 שעות</span>
                     </div>
                     <div class="cta-stat">
-                        <span class="stat-icon">🎯</span>
-                        <span class="stat-value" data-en="Quality Work">עבודה איכותית</span>
-                        <span class="stat-label" data-en="100% Satisfaction">שביעות רצון 100%</span>
+                        <span class="stat-value" data-en="Quality Focus">דגש על איכות</span>
+                        <span class="stat-label" data-en="Clean & maintainable">קוד נקי ובר־תחזוקה</span>
                     </div>
                     <div class="cta-stat">
-                        <span class="stat-icon">🚀</span>
                         <span class="stat-value" data-en="On-Time Delivery">מסירה בזמן</span>
-                        <span class="stat-label" data-en="Always on schedule">תמיד לפי לוח זמנים</span>
+                        <span class="stat-label" data-en="Committed deadlines">עמידה בלוחות זמנים</span>
                     </div>
                 </div>
-                <a href="#contact" class="btn btn-hire" data-en="Hire Me Now">שכור אותי עכשיו</a>
+                <a href="#contact" class="btn btn-hire" data-en="Start a Conversation">בואו נדבר</a>
             </div>
         </div>
     </section>
@@ -588,8 +609,9 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
+            <p class="section-eyebrow" data-en="Contact">יצירת קשר</p>
             <h2 class="section-title" data-en="Contact Me">צור קשר</h2>
-            <p class="contact-subtitle" data-en="Have a project or idea? Let's talk!">יש לך פרויקט או רעיון? בוא נדבר!</p>
+            <p class="contact-subtitle" data-en="Have a project or idea? Let's talk.">יש לך פרויקט או רעיון? בוא נדבר.</p>
             <div class="contact-content">
                 <div class="contact-info">
                     <div class="contact-item">
@@ -662,9 +684,9 @@
     <!-- Easter Egg Message -->
     <div id="easterEggMessage" class="easter-egg-message">
         <div class="easter-egg-content">
-            <h2>🎉 מצאת את ה-Easter Egg! 🎉</h2>
-            <p>אתה יודע את הקומבינציה הסודית!</p>
-            <button onclick="closeEasterEgg()" class="btn btn-primary">סגור</button>
+            <h2 data-en="You found the Easter Egg!">מצאת את ה-Easter Egg!</h2>
+            <p data-en="You know the secret combination.">אתה יודע את הקומבינציה הסודית.</p>
+            <button onclick="closeEasterEgg()" class="btn btn-primary" data-en="Close">סגור</button>
         </div>
     </div>
 

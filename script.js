@@ -196,13 +196,13 @@ if (shouldLoadParticles) {
                 }
             },
             color: {
-                value: '#6366f1'
+                value: '#0f766e'
             },
             shape: {
                 type: 'circle'
             },
             opacity: {
-                value: 0.45,
+                value: 0.4,
                 random: false,
                 anim: {
                     enable: false
@@ -218,8 +218,8 @@ if (shouldLoadParticles) {
             line_linked: {
                 enable: true,
                 distance: 160,
-                color: '#6366f1',
-                opacity: 0.22,
+                color: '#0f766e',
+                opacity: 0.18,
                 width: 1
             },
             move: {
@@ -1097,7 +1097,7 @@ if (enableCursorGlow) {
         width: 420px;
         height: 420px;
         border-radius: 50%;
-        background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, rgba(99, 102, 241, 0.04) 35%, transparent 68%);
+        background: radial-gradient(circle, rgba(15, 118, 110, 0.1) 0%, rgba(15, 118, 110, 0.03) 35%, transparent 68%);
         pointer-events: none;
         transform: translate3d(-50%, -50%, 0);
         transition: opacity 0.3s ease;
@@ -1214,19 +1214,22 @@ const navBrand = document.querySelector('.nav-brand');
 let clickCount = 0;
 let clickTimer;
 
-navBrand.addEventListener('click', () => {
-    clickCount++;
-    
-    if (clickCount === 1) {
-        clickTimer = setTimeout(() => {
+if (navBrand) {
+    navBrand.addEventListener('click', (e) => {
+        clickCount++;
+
+        if (clickCount === 1) {
+            clickTimer = setTimeout(() => {
+                clickCount = 0;
+            }, 500);
+        } else if (clickCount === 3) {
+            e.preventDefault();
+            clearTimeout(clickTimer);
             clickCount = 0;
-        }, 500);
-    } else if (clickCount === 3) {
-        clearTimeout(clickTimer);
-        clickCount = 0;
-        showEasterEgg();
-    }
-});
+            showEasterEgg();
+        }
+    });
+}
 
 // =========================
 // BLOG ARTICLES MODAL
