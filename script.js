@@ -986,38 +986,113 @@ if (savedLang === 'en') {
 }
 
 // =========================
-// SCROLL ANIMATIONS - Optimized
+// SCROLL REVEAL + COUNTERS + TILT + MAGNETIC
+// Lightweight: transform/opacity only, no filters on scroll
 // =========================
-// Disable scroll animations on mobile / reduced motion
 const isMobile = window.innerWidth <= 768;
-if (!isMobile && !prefersReducedMotion) {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
-    };
+const canAnimate = !isMobile && !prefersReducedMotion;
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                entry.target.style.willChange = 'auto';
-            }
+function animateCounter(el) {
+    const target = parseFloat(el.getAttribute('data-count') || '0');
+    const suffix = el.getAttribute('data-suffix') || '';
+    const duration = 1200;
+    const start = performance.now();
+
+    function frame(now) {
+        const t = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - t, 3);
+        const value = Math.round(target * eased);
+        el.textContent = value + suffix;
+        if (t < 1) requestAnimationFrame(frame);
+    }
+
+    requestAnimationFrame(frame);
+}
+
+if (canAnimate) {
+    // Stagger hero items immediately
+    document.querySelectorAll('.hero .reveal-item').forEach((el, i) => {
+        el.style.setProperty('--reveal-i', String(i));
+        requestAnimationFrame(() => {
+            setTimeout(() => el.classList.add('is-visible'), 80 + i * 70);
         });
-    }, observerOptions);
+    });
 
-    // Observe all sections
-    document.querySelectorAll('section').forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(30px)';
-        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        section.style.willChange = 'opacity, transform';
-        observer.observe(section);
+    const revealObserver = new IntersectionObserver(
+        entries => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                const el = entry.target;
+                el.classList.add('is-visible');
+                if (el.classList.contains('process-step')) {
+                    el.classList.add('is-visible');
+                }
+                el.querySelectorAll('.stat-number[data-count]').forEach(num => {
+                    if (!num.dataset.counted) {
+                        num.dataset.counted = '1';
+                        animateCounter(num);
+                    }
+                });
+                if (el.matches('.stat-number[data-count]') && !el.dataset.counted) {
+                    el.dataset.counted = '1';
+                    animateCounter(el);
+                }
+                revealObserver.unobserve(el);
+            });
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+    );
+
+    document.querySelectorAll('.reveal-item').forEach(el => {
+        if (!el.closest('.hero')) revealObserver.observe(el);
+    });
+
+    document.querySelectorAll('.process-step').forEach(el => revealObserver.observe(el));
+    document.querySelectorAll('.stat-number[data-count]').forEach(el => revealObserver.observe(el.closest('.stat-card') || el));
+
+    // 3D tilt — transform only
+    document.querySelectorAll('.tilt-card').forEach(card => {
+        let raf = null;
+        let mx = 0;
+        let my = 0;
+
+        card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            mx = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+            my = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+            if (raf) return;
+            raf = requestAnimationFrame(() => {
+                card.style.transform = `perspective(900px) rotateY(${mx * 6}deg) rotateX(${-my * 6}deg) translateY(-4px)`;
+                raf = null;
+            });
+        }, { passive: true });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+        });
+    });
+
+    // Magnetic buttons
+    document.querySelectorAll('.magnetic').forEach(btn => {
+        btn.addEventListener('mousemove', e => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            btn.style.transform = `translate(${x * 0.18}px, ${y * 0.22}px)`;
+        }, { passive: true });
+
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = '';
+        });
     });
 } else {
-    document.querySelectorAll('section').forEach(section => {
-        section.style.opacity = '1';
-        section.style.transform = 'none';
+    document.querySelectorAll('.reveal-item, .process-step').forEach(el => {
+        el.classList.add('is-visible');
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+    });
+    document.querySelectorAll('.stat-number[data-count]').forEach(el => {
+        el.textContent = (el.getAttribute('data-count') || '0') + (el.getAttribute('data-suffix') || '');
     });
 }
 

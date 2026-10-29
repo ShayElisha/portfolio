@@ -44,6 +44,7 @@
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link" data-en="Home">בית</a></li>
                 <li><a href="#about" class="nav-link" data-en="About">אודות</a></li>
+                <li><a href="#services" class="nav-link" data-en="Services">שירותים</a></li>
                 <li><a href="#education" class="nav-link" data-en="Education">השכלה</a></li>
                 <li><a href="#skills" class="nav-link" data-en="Skills">מיומנויות</a></li>
                 <li><a href="#projects" class="nav-link" data-en="Projects">פרויקטים</a></li>
@@ -91,31 +92,41 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+        <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
         <div class="hero-inner">
             <div class="hero-content">
-                <p class="hero-eyebrow" data-en="Full Stack Developer · Software Engineer">מפתח Full Stack · הנדסאי תוכנה</p>
-                <h1 class="hero-title">
+                <p class="hero-eyebrow reveal-item" data-en="Available for new opportunities">זמין להזדמנויות חדשות</p>
+                <h1 class="hero-title reveal-item">
                     <span class="hero-greeting" data-en-start="Hello, I'm ">שלום, אני </span>
                     <span class="highlight" id="dynamicName">שי אלישע</span>
                 </h1>
-                <p class="hero-subtitle" id="typingText">
+                <p class="hero-role reveal-item" data-en="Full Stack Developer · Software Engineer">מפתח Full Stack · הנדסאי תוכנה</p>
+                <p class="hero-subtitle reveal-item" id="typingText">
                     <span class="typing-cursor"></span>
                 </p>
-                <p class="hero-lead" data-en="I design and build modern web systems — from polished interfaces to solid backends.">בונה מערכות ווב מודרניות — מממשקים מדויקים ועד שרתים יציבים.</p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary" data-en="View Projects">צפה בפרויקטים</a>
-                    <a href="#contact" class="btn btn-secondary" data-en="Get in Touch">צור קשר</a>
+                <p class="hero-lead reveal-item" data-en="I design and build modern web systems — from polished interfaces to solid backends, with clean code, real-time features, and a product mindset.">בונה מערכות ווב מודרניות — מממשקים מדויקים ועד שרתים יציבים, עם קוד נקי, פיצ׳רים בזמן אמת וחשיבה מוצרית.</p>
+                <div class="hero-meta reveal-item">
+                    <span><i class="fas fa-map-marker-alt"></i> <span data-en="Tel Aviv, Israel">תל אביב, ישראל</span></span>
+                    <span><i class="fas fa-graduation-cap"></i> <span data-en="GPA 93">ממוצע 93</span></span>
+                    <span><i class="fas fa-code"></i> <span data-en="8+ shipped projects">8+ פרויקטים</span></span>
                 </div>
-                <div class="social-links">
+                <div class="hero-buttons reveal-item">
+                    <a href="#projects" class="btn btn-primary magnetic" data-en="View Projects">צפה בפרויקטים</a>
+                    <a href="#contact" class="btn btn-secondary magnetic" data-en="Get in Touch">צור קשר</a>
+                </div>
+                <div class="social-links reveal-item">
                     <a href="https://github.com/ShayElisha" target="_blank" class="social-link" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
                     <a href="https://www.linkedin.com/in/shay-elisha" target="_blank" class="social-link" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                     <a href="mailto:shayelisha2312@gmail.com" class="social-link" title="Email" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="tel:0537171884" class="social-link" title="Phone" aria-label="Phone"><i class="fas fa-phone"></i></a>
                 </div>
             </div>
-            <div class="hero-image">
-                <div class="profile-frame">
+            <div class="hero-image reveal-item">
+                <div class="profile-frame tilt-card">
                     <div class="profile-pic" aria-hidden="true"></div>
                     <div class="profile-ring" aria-hidden="true"></div>
+                    <div class="profile-badge" data-en="Full Stack">Full Stack</div>
                 </div>
             </div>
         </div>
@@ -124,47 +135,168 @@
         </div>
     </section>
 
+    <!-- Tech marquee -->
+    <div class="tech-marquee" aria-hidden="true">
+        <div class="tech-marquee-track">
+            <span>JavaScript</span><span>TypeScript</span><span>React</span><span>Angular</span><span>Node.js</span><span>Express</span><span>MongoDB</span><span>Firebase</span><span>ASP.NET</span><span>Python</span><span>Socket.io</span><span>SQL</span><span>Git</span><span>Tailwind</span>
+            <span>JavaScript</span><span>TypeScript</span><span>React</span><span>Angular</span><span>Node.js</span><span>Express</span><span>MongoDB</span><span>Firebase</span><span>ASP.NET</span><span>Python</span><span>Socket.io</span><span>SQL</span><span>Git</span><span>Tailwind</span>
+        </div>
+    </div>
+
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <p class="section-eyebrow" data-en="Introduction">היכרות</p>
-            <h2 class="section-title" data-en="About Me">אודותיי</h2>
+            <p class="section-eyebrow reveal-item" data-en="Introduction">היכרות</p>
+            <h2 class="section-title reveal-item" data-en="About Me">אודותיי</h2>
             <div class="about-content">
-                <div class="about-text">
-                    <p data-en="Ambitious with a passion for technology, innovation, and improving development processes. Experienced in building client-side and server-side web systems and applications, using JavaScript, TypeScript, React, Node.js, and MongoDB.">שאפתן עם אהבה לטכנולוגיה, חדשנות ולשיפור תהליכי פיתוח. מנוסה בבניית מערכות ואפליקציות ווב מבוססות צד לקוח וצד שרת, תוך שימוש ב־JavaScript, TypeScript, React, Node.js ו־MongoDB.</p>
-                    <p data-en="Possess analytical thinking and high problem-solving abilities, learn quickly and handle challenges well in a dynamic environment. Work well in a team, have excellent communication, personal responsibility, and high initiative. Emphasis on writing clean and efficient code.">בעל חשיבה אנליטית ויכולת גבוהה לפתרון בעיות, לומד מהר ומתמודד היטב עם אתגרים בסביבה דינמית. עובד היטב בצוות, בעל תקשורת מצוינת, אחריות אישית ויוזמה גבוהה. שם דגש על כתיבת קוד נקי ויעיל.</p>
+                <div class="about-text reveal-item">
+                    <p data-en="Ambitious Full Stack developer with a passion for technology, innovation, and improving development processes. Experienced in building client-side and server-side web systems and applications using JavaScript, TypeScript, React, Angular, Node.js, MongoDB, Firebase, and ASP.NET.">שאפתן עם אהבה לטכנולוגיה, חדשנות ולשיפור תהליכי פיתוח. מנוסה בבניית מערכות ואפליקציות ווב מבוססות צד לקוח וצד שרת, תוך שימוש ב־JavaScript, TypeScript, React, Angular, Node.js, MongoDB, Firebase ו־ASP.NET.</p>
+                    <p data-en="I enjoy turning complex business needs into clear, usable products — ERP systems, booking platforms, delivery management, and customer-facing websites. Strong analytical thinking, fast learning, and ownership of delivery from idea to production.">אוהב להפוך צרכים עסקיים מורכבים למוצרים ברורים ושימושיים — מערכות ERP, פלטפורמות תורים, ניהול משלוחים ואתרי לקוחות. חשיבה אנליטית חזקה, למידה מהירה ואחריות מלאה מהרעיון ועד לפרודקשן.</p>
+                    <p data-en="I work well in a team, communicate clearly, take personal responsibility, and prioritize clean, maintainable, efficient code. Comfortable across the stack: UI, APIs, databases, real-time features, and security basics.">עובד היטב בצוות, מתקשר בבהירות, לוקח אחריות אישית ושם דגש על קוד נקי, בר־תחזוקה ויעיל. נוח בכל השכבות: ממשק, API, מסדי נתונים, פיצ׳רים בזמן אמת ויסודות אבטחה.</p>
                     <div class="about-info">
                         <div class="info-item">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>ישראל</span>
+                            <span data-en="Tel Aviv, Israel">תל אביב, ישראל</span>
                         </div>
                         <div class="info-item">
                             <i class="fas fa-envelope"></i>
                             <span>shayelisha2312@gmail.com</span>
                         </div>
                         <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <span dir="ltr">053-717-1884</span>
+                        </div>
+                        <div class="info-item">
                             <i class="fas fa-graduation-cap"></i>
-                            <span>הנדסאי תוכנה - המכללה למינהל</span>
+                            <span data-en="Software Engineer — College of Management (GPA 93)">הנדסאי תוכנה — המכללה למינהל (ממוצע 93)</span>
                         </div>
                         <div class="info-item">
                             <i class="fas fa-globe"></i>
-                            <span>עברית (שפת אם) | אנגלית (שוטפת)</span>
+                            <span data-en="Hebrew (native) · English (fluent)">עברית (שפת אם) · אנגלית (שוטפת)</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-briefcase"></i>
+                            <span data-en="Open to freelance & full-time roles">פתוח לפרילנס ולמשרות Full-Time</span>
                         </div>
                     </div>
                 </div>
                 <div class="about-stats">
-                    <div class="stat-card">
-                        <h3 class="stat-number">4</h3>
-                        <p class="stat-label" data-en="Major Projects">פרויקטים מרכזיים</p>
+                    <div class="stat-card reveal-item">
+                        <h3 class="stat-number" data-count="8" data-suffix="+">0</h3>
+                        <p class="stat-label" data-en="Shipped Projects">פרויקטים שפורסמו</p>
                     </div>
-                    <div class="stat-card">
-                        <h3 class="stat-number">10+</h3>
+                    <div class="stat-card reveal-item">
+                        <h3 class="stat-number" data-count="15" data-suffix="+">0</h3>
                         <p class="stat-label" data-en="Technologies">טכנולוגיות</p>
                     </div>
-                    <div class="stat-card">
-                        <h3 class="stat-number">100%</h3>
-                        <p class="stat-label" data-en="Commitment">מחויבות</p>
+                    <div class="stat-card reveal-item">
+                        <h3 class="stat-number" data-count="93" data-suffix="">0</h3>
+                        <p class="stat-label" data-en="Graduation GPA">ממוצע סיום</p>
                     </div>
+                </div>
+            </div>
+
+            <div class="strengths-grid">
+                <div class="strength-card reveal-item">
+                    <div class="strength-icon"><i class="fas fa-layer-group"></i></div>
+                    <h3 data-en="End-to-end ownership">בעלות מקצה לקצה</h3>
+                    <p data-en="From requirements and architecture to UI, APIs, databases, and deployment.">מדרישות וארכיטקטורה ועד ממשק, API, מסד נתונים ופריסה.</p>
+                </div>
+                <div class="strength-card reveal-item">
+                    <div class="strength-icon"><i class="fas fa-bolt"></i></div>
+                    <h3 data-en="Real-time systems">מערכות בזמן אמת</h3>
+                    <p data-en="Socket.io, live updates, notifications, and interactive dashboards.">Socket.io, עדכונים חיים, התראות ודשבורדים אינטראקטיביים.</p>
+                </div>
+                <div class="strength-card reveal-item">
+                    <div class="strength-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3 data-en="Security mindset">חשיבת אבטחה</h3>
+                    <p data-en="Auth, validation, encryption basics, and secure API design.">אימות, ולידציה, יסודות הצפנה ותכנון API מאובטח.</p>
+                </div>
+                <div class="strength-card reveal-item">
+                    <div class="strength-icon"><i class="fas fa-comments"></i></div>
+                    <h3 data-en="Clear communication">תקשורת ברורה</h3>
+                    <p data-en="Translate technical decisions into simple language for clients and teammates.">מתרגם החלטות טכניות לשפה פשוטה ללקוחות ולצוות.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <p class="section-eyebrow reveal-item" data-en="What I offer">מה אני מציע</p>
+            <h2 class="section-title reveal-item" data-en="Services">שירותים</h2>
+            <p class="section-intro reveal-item" data-en="Practical solutions for businesses and products — built to be usable, maintainable, and ready for growth.">פתרונות פרקטיים לעסקים ולמוצרים — שימושיים, ברי־תחזוקה ומוכנים לצמיחה.</p>
+            <div class="services-grid">
+                <article class="service-card tilt-card reveal-item">
+                    <div class="service-num">01</div>
+                    <h3 data-en="Full Stack Web Apps">אפליקציות Full Stack</h3>
+                    <p data-en="Complete web applications with React/Angular frontends and Node.js or ASP.NET backends.">אפליקציות ווב מלאות עם Frontend ב־React/Angular ו־Backend ב־Node.js או ASP.NET.</p>
+                    <ul>
+                        <li data-en="Auth & user roles">אימות ותפקידי משתמש</li>
+                        <li data-en="CRUD & business logic">CRUD ולוגיקה עסקית</li>
+                        <li data-en="Responsive UI">ממשק רספונסיבי</li>
+                    </ul>
+                </article>
+                <article class="service-card tilt-card reveal-item">
+                    <div class="service-num">02</div>
+                    <h3 data-en="Business Systems">מערכות עסקיות</h3>
+                    <p data-en="Custom internal tools: ERP modules, shift scheduling, inventory, sales, and reporting.">כלים פנימיים מותאמים: מודולי ERP, משמרות, מלאי, מכירות ודוחות.</p>
+                    <ul>
+                        <li data-en="Admin dashboards">דשבורדי ניהול</li>
+                        <li data-en="Automation & cron jobs">אוטומציה ומשימות מתוזמנות</li>
+                        <li data-en="Data-driven insights">תובנות מבוססות נתונים</li>
+                    </ul>
+                </article>
+                <article class="service-card tilt-card reveal-item">
+                    <div class="service-num">03</div>
+                    <h3 data-en="Booking & Client Sites">אתרי לקוחות ותורים</h3>
+                    <p data-en="Appointment systems, galleries, contact flows, and polished marketing sites for local businesses.">מערכות תורים, גלריות, טפסי יצירת קשר ואתרי שיווק מדויקים לעסקים.</p>
+                    <ul>
+                        <li data-en="Online booking">קביעת תורים אונליין</li>
+                        <li data-en="Email notifications">התראות במייל</li>
+                        <li data-en="Mobile-first design">עיצוב Mobile-First</li>
+                    </ul>
+                </article>
+                <article class="service-card tilt-card reveal-item">
+                    <div class="service-num">04</div>
+                    <h3 data-en="APIs & Integrations">API ואינטגרציות</h3>
+                    <p data-en="REST APIs, third-party services, real-time channels, and clean data models.">REST API, שירותי צד שלישי, ערוצי זמן אמת ומודלי נתונים מסודרים.</p>
+                    <ul>
+                        <li data-en="Firebase / MongoDB / SQL">Firebase / MongoDB / SQL</li>
+                        <li data-en="WebSockets">WebSockets</li>
+                        <li data-en="Payments & email">תשלומים ואימייל</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="process">
+        <div class="container">
+            <p class="section-eyebrow reveal-item" data-en="How I work">איך אני עובד</p>
+            <h2 class="section-title reveal-item" data-en="Process">תהליך העבודה</h2>
+            <div class="process-steps">
+                <div class="process-step reveal-item">
+                    <span class="process-index">1</span>
+                    <h3 data-en="Discover">הבנה</h3>
+                    <p data-en="Clarify goals, users, constraints, and success metrics before writing code.">מבהירים מטרות, משתמשים, אילוצים ומדדי הצלחה לפני כתיבת קוד.</p>
+                </div>
+                <div class="process-step reveal-item">
+                    <span class="process-index">2</span>
+                    <h3 data-en="Design">תכנון</h3>
+                    <p data-en="Map flows, data models, and UI structure so the build stays focused.">ממפים תהליכים, מודל נתונים ומבנה ממשק כדי שהפיתוח יישאר ממוקד.</p>
+                </div>
+                <div class="process-step reveal-item">
+                    <span class="process-index">3</span>
+                    <h3 data-en="Build">פיתוח</h3>
+                    <p data-en="Ship in iterations — working features early, clean architecture underneath.">מספקים באיטרציות — פיצ׳רים עובדים מוקדם, עם ארכיטקטורה נקייה מתחת.</p>
+                </div>
+                <div class="process-step reveal-item">
+                    <span class="process-index">4</span>
+                    <h3 data-en="Polish & handoff">ליטוש ומסירה</h3>
+                    <p data-en="Test, refine UX, document what matters, and leave something maintainable.">בודקים, משפרים UX, מתעדים את העיקר ומשאירים משהו שקל לתחזק.</p>
                 </div>
             </div>
         </div>
@@ -173,16 +305,17 @@
     <!-- Education Timeline Section -->
     <section id="education" class="education">
         <div class="container">
-            <p class="section-eyebrow" data-en="Background">רקע</p>
-            <h2 class="section-title" data-en="My Education">ההשכלה שלי</h2>
+            <p class="section-eyebrow reveal-item" data-en="Background">רקע</p>
+            <h2 class="section-title reveal-item" data-en="My Education">ההשכלה שלי</h2>
             <div class="timeline">
-                <div class="timeline-item">
+                <div class="timeline-item reveal-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <div class="timeline-date" data-en="2023 - 2025">2023 - 2025</div>
+                        <div class="timeline-badge" data-en="GPA 93">ממוצע 93</div>
                         <h3 data-en="Software Engineer">הנדסאי תוכנה</h3>
                         <h4 data-en="College of Management">המכללה למינהל</h4>
-                        <p data-en="Graduate of Software Engineering studies with an average of 93, with extensive specialization in software development and Full Stack technologies, information systems analysis and database management, software testing and project management. Focused on deepening knowledge in programming, web systems development, information systems planning and analysis, information security and cybersecurity, implementing software testing principles, and efficient management of technological projects while solving problems and creating quality solutions.">בוגר ללימודי הנדסאי תוכנה. סיום לימודים עם ממוצע 93, עם התמחות רחבה בפיתוח תוכנה ובטכנולוגיות Full Stack, ניתוח מערכות מידע וניהול מסדי נתונים, בדיקות תוכנה וניהול פרויקטים. מתמקד בהעמקת הידע בתכנות, פיתוח מערכות ווב, תכנון וניתוח מערכות מידע, אבטחת מידע וסייבר, יישום עקרונות בדיקות תוכנה, וניהול יעיל של פרויקטים טכנולוגיים תוך פתרון בעיות ויצירת פתרונות איכותיים.</p>
+                        <p data-en="Graduate of Software Engineering studies with an average of 93, with extensive specialization in software development and Full Stack technologies, information systems analysis and database management, software testing and project management. Focused on deepening knowledge in programming, web systems development, information systems planning and analysis, information security and cybersecurity, implementing software testing principles, and efficient management of technological projects while solving problems and creating quality solutions.">בוגר לימודי הנדסאי תוכנה. סיום לימודים עם ממוצע 93, עם התמחות רחבה בפיתוח תוכנה ובטכנולוגיות Full Stack, ניתוח מערכות מידע וניהול מסדי נתונים, בדיקות תוכנה וניהול פרויקטים. מתמקד בהעמקת הידע בתכנות, פיתוח מערכות ווב, תכנון וניתוח מערכות מידע, אבטחת מידע וסייבר, יישום עקרונות בדיקות תוכנה, וניהול יעיל של פרויקטים טכנולוגיים תוך פתרון בעיות ויצירת פתרונות איכותיים.</p>
                         <ul>
                             <li data-en="Web systems and applications development">פיתוח מערכות ווב ואפליקציות</li>
                             <li data-en="Information systems analysis and database management">ניתוח מערכות מידע וניהול מסדי נתונים</li>
@@ -201,11 +334,27 @@
     <!-- Skills Section -->
     <section id="skills" class="skills">
         <div class="container">
-            <p class="section-eyebrow" data-en="Toolkit">ארגז כלים</p>
-            <h2 class="section-title" data-en="My Skills">המיומנויות שלי</h2>
+            <p class="section-eyebrow reveal-item" data-en="Toolkit">ארגז כלים</p>
+            <h2 class="section-title reveal-item" data-en="My Skills">המיומנויות שלי</h2>
+            <p class="section-intro reveal-item" data-en="A practical stack for building modern products — frontend, backend, data, real-time, and security foundations.">סטאק פרקטי לבניית מוצרים מודרניים — Frontend, Backend, נתונים, זמן אמת ויסודות אבטחה.</p>
+
+            <div class="focus-strip reveal-item">
+                <div class="focus-item">
+                    <span class="focus-label" data-en="Strongest at">הכי חזק ב</span>
+                    <strong>React · Node.js · MongoDB · TypeScript</strong>
+                </div>
+                <div class="focus-item">
+                    <span class="focus-label" data-en="Also building with">גם בונה עם</span>
+                    <strong>Angular · ASP.NET · Firebase · Python</strong>
+                </div>
+                <div class="focus-item">
+                    <span class="focus-label" data-en="Currently deepening">מעמיק כעת ב</span>
+                    <strong data-en="System design · AI integrations · Performance">תכנון מערכות · אינטגרציות AI · ביצועים</strong>
+                </div>
+            </div>
             
             <div class="skills-categories">
-                <div class="skill-category">
+                <div class="skill-category reveal-item">
                     <h3 class="category-title" data-en="Programming Languages"><i class="fas fa-code"></i> שפות תכנות</h3>
                     <div class="skills-tags">
                         <span class="skill-tag">JavaScript</span>
@@ -217,7 +366,7 @@
                     </div>
                 </div>
 
-                <div class="skill-category">
+                <div class="skill-category reveal-item">
                     <h3 class="category-title" data-en="Frontend"><i class="fas fa-laptop-code"></i> צד לקוח</h3>
                     <div class="skills-tags">
                         <span class="skill-tag">React.js</span>
@@ -229,7 +378,7 @@
                     </div>
                 </div>
 
-                <div class="skill-category">
+                <div class="skill-category reveal-item">
                     <h3 class="category-title" data-en="Backend"><i class="fas fa-server"></i> צד שרת</h3>
                     <div class="skills-tags">
                         <span class="skill-tag">Node.js</span>
@@ -238,7 +387,7 @@
                     </div>
                 </div>
 
-                <div class="skill-category">
+                <div class="skill-category reveal-item">
                     <h3 class="category-title" data-en="Databases"><i class="fas fa-database"></i> מסדי נתונים</h3>
                     <div class="skills-tags">
                         <span class="skill-tag">MongoDB</span>
@@ -248,7 +397,7 @@
                     </div>
                 </div>
 
-                <div class="skill-category">
+                <div class="skill-category reveal-item">
                     <h3 class="category-title" data-en="Communication Protocols"><i class="fas fa-network-wired"></i> פרוטוקולי תקשורת</h3>
                     <div class="skills-tags">
                         <span class="skill-tag">HTTP</span>
@@ -260,7 +409,7 @@
                     </div>
                 </div>
 
-                <div class="skill-category">
+                <div class="skill-category reveal-item">
                     <h3 class="category-title" data-en="Cybersecurity & Information Security"><i class="fas fa-shield-alt"></i> סייבר ואבטחת מידע</h3>
                     <div class="skills-tags">
                         <span class="skill-tag" data-en="Network Security">אבטחת רשתות</span>
@@ -279,7 +428,7 @@
                     </div>
                 </div>
 
-                <div class="skill-category">
+                <div class="skill-category reveal-item">
                     <h3 class="category-title" data-en="Tools & Technologies"><i class="fas fa-tools"></i> כלים וטכנולוגיות</h3>
                     <div class="skills-tags">
                         <span class="skill-tag">Git</span>
@@ -291,7 +440,7 @@
                     </div>
                 </div>
 
-                <div class="skill-category">
+                <div class="skill-category reveal-item">
                     <h3 class="category-title" data-en="Additional Fields"><i class="fas fa-project-diagram"></i> תחומים נוספים</h3>
                     <div class="skills-tags">
                         <span class="skill-tag" data-en="Project Management">ניהול פרויקטים</span>
@@ -308,11 +457,12 @@
     <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="container">
-            <p class="section-eyebrow" data-en="Selected Work">עבודות נבחרות</p>
-            <h2 class="section-title" data-en="My Projects">הפרויקטים שלי</h2>
+            <p class="section-eyebrow reveal-item" data-en="Selected Work">עבודות נבחרות</p>
+            <h2 class="section-title reveal-item" data-en="My Projects">הפרויקטים שלי</h2>
+            <p class="section-intro reveal-item" data-en="From ERP and delivery systems to booking platforms and business websites — real products with real complexity.">מ־ERP ומערכות משלוחים ועד פלטפורמות תורים ואתרי עסקים — מוצרים אמיתיים עם מורכבות אמיתית.</p>
             <div class="projects-grid">
                 <!-- Project 1: ERP System -->
-                <div class="project-card" data-project="erp">
+                <div class="project-card tilt-card reveal-item" data-project="erp">
                     <div class="project-image">
                         <div class="project-overlay">
                             <button class="project-link" onclick="openProjectModal('erp')"><i class="fas fa-info-circle"></i></button>
@@ -334,7 +484,7 @@
                 </div>
 
                 <!-- Project 2: Delivery System -->
-                <div class="project-card" data-project="delivery">
+                <div class="project-card tilt-card reveal-item" data-project="delivery">
                     <div class="project-image project-image-2">
                         <div class="project-overlay">
                             <button class="project-link" onclick="openProjectModal('delivery')"><i class="fas fa-info-circle"></i></button>
@@ -353,7 +503,7 @@
                 </div>
 
                 <!-- Project 3: Restaurant Platform -->
-                <div class="project-card" data-project="restaurant">
+                <div class="project-card tilt-card reveal-item" data-project="restaurant">
                     <div class="project-image project-image-3">
                         <div class="project-overlay">
                             <button class="project-link" onclick="openProjectModal('restaurant')"><i class="fas fa-info-circle"></i></button>
@@ -373,7 +523,7 @@
                 </div>
 
                 <!-- Project 4: Business Simulator -->
-                <div class="project-card" data-project="simulator">
+                <div class="project-card tilt-card reveal-item" data-project="simulator">
                     <div class="project-image project-image-4">
                         <div class="project-overlay">
                             <button class="project-link" onclick="openProjectModal('simulator')"><i class="fas fa-info-circle"></i></button>
@@ -393,7 +543,7 @@
                 </div>
 
                 <!-- Project 5: Wedding Seating & Invitations -->
-                <div class="project-card" data-project="wedding">
+                <div class="project-card tilt-card reveal-item" data-project="wedding">
                     <div class="project-image project-image-5">
                         <div class="project-overlay">
                             <button class="project-link" onclick="openProjectModal('wedding')"><i class="fas fa-info-circle"></i></button>
@@ -413,7 +563,7 @@
                 </div>
 
                 <!-- Project 6: Employee Shift Management -->
-                <div class="project-card" data-project="shifts">
+                <div class="project-card tilt-card reveal-item" data-project="shifts">
                     <div class="project-image project-image-6">
                         <div class="project-overlay">
                             <button class="project-link" onclick="openProjectModal('shifts')"><i class="fas fa-info-circle"></i></button>
@@ -433,7 +583,7 @@
                 </div>
 
                 <!-- Project 7: Ayalla Cosmetics -->
-                <div class="project-card" data-project="ayalla-cosmetics">
+                <div class="project-card tilt-card reveal-item" data-project="ayalla-cosmetics">
                     <div class="project-image project-image-iframe">
                         <iframe 
                             src="https://ayalla-cosetics.vercel.app/" 
@@ -464,7 +614,7 @@
                 </div>
 
                 <!-- Project 8: Booking App -->
-                <div class="project-card" data-project="booking-app">
+                <div class="project-card tilt-card reveal-item" data-project="booking-app">
                     <div class="project-image project-image-iframe">
                         <iframe 
                             src="https://booking-app-two-omega.vercel.app/" 
@@ -527,12 +677,12 @@
     <!-- Blog/Articles Section -->
     <section id="blog" class="blog">
         <div class="container">
-            <p class="section-eyebrow" data-en="Writing">כתיבה</p>
-            <h2 class="section-title" data-en="Latest Articles">מאמרים אחרונים</h2>
-            <p class="blog-subtitle" data-en="Thoughts, tutorials, and insights from my development journey">מחשבות, מדריכים ותובנות ממסע הפיתוח שלי</p>
+            <p class="section-eyebrow reveal-item" data-en="Writing">כתיבה</p>
+            <h2 class="section-title reveal-item" data-en="Latest Articles">מאמרים אחרונים</h2>
+            <p class="blog-subtitle reveal-item" data-en="Thoughts, tutorials, and insights from my development journey">מחשבות, מדריכים ותובנות ממסע הפיתוח שלי</p>
             
             <div class="articles-grid">
-                <article class="article-card">
+                <article class="article-card tilt-card reveal-item">
                     <div class="article-image article-image-1">
                         <span class="article-tag" data-en="Technical">טכני</span>
                     </div>
@@ -547,7 +697,7 @@
                     </div>
                 </article>
 
-                <article class="article-card">
+                <article class="article-card tilt-card reveal-item">
                     <div class="article-image article-image-2">
                         <span class="article-tag" data-en="Case Study">מקרה בוחן</span>
                     </div>
@@ -562,7 +712,7 @@
                     </div>
                 </article>
 
-                <article class="article-card">
+                <article class="article-card tilt-card reveal-item">
                     <div class="article-image article-image-3">
                         <span class="article-tag" data-en="Tutorial">מדריך</span>
                     </div>
@@ -580,10 +730,36 @@
         </div>
     </section>
 
+    <!-- FAQ -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <p class="section-eyebrow reveal-item" data-en="FAQ">שאלות נפוצות</p>
+            <h2 class="section-title reveal-item" data-en="Good to know">כדאי לדעת</h2>
+            <div class="faq-list">
+                <details class="faq-item reveal-item" open>
+                    <summary data-en="What kind of projects do you take on?">איזה סוג פרויקטים אתה לוקח?</summary>
+                    <p data-en="Full Stack web apps, business systems (ERP/scheduling/delivery), booking platforms, and polished client websites with real backend needs.">אפליקציות Full Stack, מערכות עסקיות (ERP/משמרות/משלוחים), פלטפורמות תורים, ואתרי לקוחות מדויקים שדורשים Backend אמיתי.</p>
+                </details>
+                <details class="faq-item reveal-item">
+                    <summary data-en="Do you work freelance and full-time?">אתה עובד גם פרילנס וגם Full-Time?</summary>
+                    <p data-en="Yes. I'm open to freelance projects and full-time opportunities where I can own features end-to-end.">כן. פתוח לפרויקטי פרילנס ולהזדמנויות Full-Time שבהן אוכל לקחת בעלות מקצה לקצה על פיצ׳רים.</p>
+                </details>
+                <details class="faq-item reveal-item">
+                    <summary data-en="What's your typical stack?">מה הסטאק הטיפוסי שלך?</summary>
+                    <p data-en="Most often React or Angular on the frontend, Node.js/Express or ASP.NET on the backend, and MongoDB, SQL Server, or Firebase for data.">לרוב React או Angular בצד לקוח, Node.js/Express או ASP.NET בצד שרת, ו־MongoDB, SQL Server או Firebase לנתונים.</p>
+                </details>
+                <details class="faq-item reveal-item">
+                    <summary data-en="How fast do you reply?">כמה מהר אתה חוזר?</summary>
+                    <p data-en="Usually within 24 hours on weekdays. Share a short brief and I'll come back with next steps.">בדרך כלל תוך 24 שעות בימי חול. שלחו תיאור קצר ואחזור עם הצעדים הבאים.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
     <!-- Hire Me CTA Section -->
     <section class="hire-me-cta">
         <div class="container">
-            <div class="cta-content">
+            <div class="cta-content reveal-item">
                 <div class="cta-badge pulse" data-en="Available for Work">זמין לעבודה</div>
                 <h2 data-en="Let's build something solid">בוא נבנה משהו מדויק</h2>
                 <p data-en="Available for freelance projects and full-time roles. Clear communication, clean code, and reliable delivery.">זמין לפרויקטי פרילנס ולמשרות Full-Time. תקשורת ברורה, קוד נקי ומסירה אמינה.</p>
@@ -609,12 +785,12 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <p class="section-eyebrow" data-en="Contact">יצירת קשר</p>
-            <h2 class="section-title" data-en="Contact Me">צור קשר</h2>
-            <p class="contact-subtitle" data-en="Have a project or idea? Let's talk.">יש לך פרויקט או רעיון? בוא נדבר.</p>
+            <p class="section-eyebrow reveal-item" data-en="Contact">יצירת קשר</p>
+            <h2 class="section-title reveal-item" data-en="Contact Me">צור קשר</h2>
+            <p class="contact-subtitle reveal-item" data-en="Have a project or idea? Let's talk — I usually reply within 24 hours.">יש לך פרויקט או רעיון? בוא נדבר — בדרך כלל אני חוזר תוך 24 שעות.</p>
             <div class="contact-content">
                 <div class="contact-info">
-                    <div class="contact-item">
+                    <div class="contact-item reveal-item">
                         <div class="contact-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
@@ -623,7 +799,7 @@
                             <p>shayelisha2312@gmail.com</p>
                         </div>
                     </div>
-                    <div class="contact-item">
+                    <div class="contact-item reveal-item">
                         <div class="contact-icon">
                             <i class="fas fa-phone"></i>
                         </div>
@@ -632,7 +808,7 @@
                             <p dir="ltr">053-717-1884</p>
                         </div>
                     </div>
-                    <div class="contact-item">
+                    <div class="contact-item reveal-item">
                         <div class="contact-icon">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
@@ -641,8 +817,20 @@
                             <p data-en="Tel Aviv, Israel">תל אביב, ישראל</p>
                         </div>
                     </div>
+                    <div class="contact-item reveal-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div>
+                            <h3>LinkedIn</h3>
+                            <p><a href="https://www.linkedin.com/in/shay-elisha" target="_blank" rel="noopener">shay-elisha</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-note reveal-item">
+                        <p data-en="Best for: freelance builds, product MVPs, internal business tools, and full-time Full Stack roles.">מתאים במיוחד ל: פרויקטי פרילנס, מוצרי MVP, כלים פנימיים לעסקים, ומשרות Full Stack.</p>
+                    </div>
                 </div>
-                <form class="contact-form" id="contactForm" novalidate>
+                <form class="contact-form reveal-item" id="contactForm" novalidate>
                     <div class="form-group">
                         <input type="text" id="name" class="form-input" placeholder="שם מלא" data-placeholder-en="Full Name" required minlength="2">
                         <span class="form-error"></span>
