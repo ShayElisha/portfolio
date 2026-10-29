@@ -1070,6 +1070,10 @@ html[dir="ltr"] .timeline-content {
 .project-image-5 { background: linear-gradient(145deg, #7c2d12 0%, #1c1917 100%); }
 .project-image-6 { background: linear-gradient(145deg, #115e59 0%, #164e63 100%); }
 .project-image-7 { background: linear-gradient(145deg, #831843 0%, #0b1220 100%); }
+.project-image-9 { background: linear-gradient(145deg, #0f766e 0%, #1e3a5f 100%); }
+.project-image-10 { background: linear-gradient(145deg, #1e3a5f 0%, #134e4a 100%); }
+.project-image-11 { background: linear-gradient(145deg, #334155 0%, #0f172a 100%); }
+.project-image-12 { background: linear-gradient(145deg, #115e59 0%, #0b1220 55%, #1e3a5f 100%); }
 
 .project-image-iframe {
     height: 220px;

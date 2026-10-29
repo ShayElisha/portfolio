@@ -526,6 +526,110 @@ const projectData = {
             'Node.js v16+',
             'Angular CLI 16.1'
         ]
+    },
+    selectors: {
+        title: 'שיבוצון — שיבוץ שער יציאה',
+        titleEn: 'Selectors — Gate Out Scheduling',
+        description: 'אפליקציית ווב לניהול ושיבוץ בודקים וסלקטורים לנתיבי שער יציאה. כוללת אלגוריתם שיבוץ הוגן, שליטה ידנית מלאה, תפעול משמרת בזמן אמת, היסטוריה, אנליטיקה וייצוא — עם מודולים נפרדים לבודקים ולסלקטורים.',
+        descriptionEn: 'Web app for managing and scheduling inspectors and selectors on exit-gate lanes. Includes a fairness scheduling algorithm, full manual control, live shift operations, history, analytics, and export — with separate modules for inspectors and selectors.',
+        github: 'https://github.com/ShayElisha/Selectors',
+        features: [
+            'שיבוץ אוטומטי הוגן כנקודת פתיחה',
+            'עריכה ידנית חופשית עם אזהרות',
+            'מודולים לבודקים (משמרת מלאה) ולסלקטורים (סבבים)',
+            'ניהול אנשים, הסמכות, נתיבים ומשמרות',
+            'היסטוריה, אנליטיקה וייצוא ללוח / שיתוף',
+            'יומן ביקורת ומעקב לאורך זמן',
+            'ממשק RTL בעברית למנהלים',
+            'פריסה ל-Vercel עם API Express ו-MongoDB Atlas'
+        ],
+        featuresEn: [
+            'Fair automatic scheduling as a starting point',
+            'Full manual editing with warnings',
+            'Modules for inspectors (full shift) and selectors (rounds)',
+            'People, certifications, lanes, and shift management',
+            'History, analytics, and export/share flows',
+            'Audit log and long-term tracking',
+            'Hebrew RTL interface for managers',
+            'Deployed on Vercel with Express API and MongoDB Atlas'
+        ],
+        technologies: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Express', 'MongoDB', 'dnd-kit', 'Nodemailer', 'Vercel']
+    },
+    inventory: {
+        title: 'מערכת ניהול מלאי ולוגיסטיקה',
+        titleEn: 'Inventory & Logistics System',
+        description: 'מערכת מלאי, לוגיסטיקה ואפשרויות מוצר מבוססת Next.js + Prisma + PostgreSQL. כוללת דשבורד, קטלוג עם מחולל מטריצה, ניפוק מהיר, תנועות מלאי, סריקה וייצוא CSV.',
+        descriptionEn: 'Inventory, logistics, and product-options system built with Next.js + Prisma + PostgreSQL. Includes a dashboard, catalog with matrix generator, fast picking, stock movements, scanning, and CSV export.',
+        github: 'https://github.com/ShayElisha/inventory',
+        features: [
+            'דשבורד ניהולי',
+            'קטלוג מוצרים עם מחולל מטריצת אפשרויות',
+            'ניפוק מהיר לפי שם / מק״ט / ברקוד',
+            'תנועות מלאי ומעקב מלאי',
+            'ניהול מיקומים ומדפי מחסן',
+            'סריקה וייצוא CSV / Excel',
+            'הגדרת קטגוריות וספקים',
+            'אינטגרציית Sentry ומגבלות קצב עם Upstash'
+        ],
+        featuresEn: [
+            'Management dashboard',
+            'Product catalog with options matrix generator',
+            'Fast picking by name / SKU / barcode',
+            'Stock movements and inventory tracking',
+            'Warehouse locations and shelf management',
+            'Scanning and CSV / Excel export',
+            'Categories and suppliers setup',
+            'Sentry integration and Upstash rate limiting'
+        ],
+        technologies: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Tailwind CSS', 'Sentry', 'Upstash', 'ExcelJS', 'Vercel']
+    },
+    containers: {
+        title: 'Containers',
+        titleEn: 'Containers',
+        description: 'פרויקט Containers לניהול קונטיינרים. הריפו זמין ב-GitHub — לפרטים מלאים, ארכיטקטורה וקוד מקור ניתן להיכנס לקישור הפרויקט.',
+        descriptionEn: 'Containers management project. The repository is available on GitHub — open the project link for full details, architecture, and source code.',
+        github: 'https://github.com/ShayElisha/containers',
+        features: [
+            'ניהול קונטיינרים',
+            'קוד מקור ומסמכים ב-GitHub',
+            'פרויקט Full Stack בתיק העבודות'
+        ],
+        featuresEn: [
+            'Container management',
+            'Source and docs on GitHub',
+            'Full Stack project in the portfolio'
+        ],
+        technologies: ['Full Stack', 'GitHub']
+    },
+    'project-manager': {
+        title: 'NexusProject — ניהול פרויקטים',
+        titleEn: 'NexusProject — Project Manager',
+        description: 'מערכת ניהול פרויקטים מתקדמת (ברמת MS Project Premium) עם תמיכה מלאה ב-RTL/LTR. Monorepo עם מנוע CPM/EVM, גאנט, קנבן, משאבים, דוחות ו-AI Copilot.',
+        descriptionEn: 'Advanced project management system (MS Project Premium class) with full RTL/LTR support. Monorepo with CPM/EVM engine, Gantt, Kanban, resources, reports, and AI Copilot.',
+        github: 'https://github.com/ShayElisha/ProjectManager',
+        features: [
+            'תצוגות: גאנט, גיליון, קנבן, לוח שנה וציר זמן',
+            'תזמון CPM, נתיב קריטי וקווי בסיס',
+            'ניהול משאבים, היסטוגרמה והחלקת עומס',
+            'EVM: PV, EV, AC, CPI, SPI',
+            'פורטפוליו PMO וזיהוי התנגשויות בין פרויקטים',
+            'AI Copilot לניתוח סיכונים ויצירת תוכנית עבודה',
+            'WebSocket לעדכונים בזמן אמת',
+            'ייצוא/ייבוא Excel ודוחות סטטוס/משאבים/תזרים',
+            'Dark/Light, Command Palette, עברית ואנגלית'
+        ],
+        featuresEn: [
+            'Views: Gantt, sheet, Kanban, calendar, and timeline',
+            'CPM scheduling, critical path, and baselines',
+            'Resource management, histogram, and leveling',
+            'EVM: PV, EV, AC, CPI, SPI',
+            'PMO portfolio and cross-project conflict detection',
+            'AI Copilot for risk analysis and plan generation',
+            'WebSocket real-time updates',
+            'Excel import/export and status/resource/cashflow reports',
+            'Dark/Light mode, Command Palette, Hebrew and English'
+        ],
+        technologies: ['React', 'Vite', 'NestJS', 'TypeScript', 'Prisma', 'PostgreSQL', 'Socket.io', 'Turborepo', 'Tailwind CSS', 'pnpm']
     }
 };
 
@@ -545,6 +649,9 @@ function openProjectModal(projectId) {
     
     const featuresHTML = features.map(feature => `<li>${feature}</li>`).join('');
     const techHTML = project.technologies.map(tech => `<span class="tag">${tech}</span>`).join('');
+    const githubHTML = project.github
+        ? `<p style="margin-top:1.5rem"><a href="${project.github}" target="_blank" rel="noopener" class="btn btn-secondary" style="display:inline-flex;gap:0.5rem;align-items:center"><i class="fab fa-github"></i> ${isEnglish ? 'View on GitHub' : 'צפה ב-GitHub'}</a></p>`
+        : '';
     
     modalBody.innerHTML = `
         <h2>${title}</h2>
@@ -559,6 +666,7 @@ function openProjectModal(projectId) {
         <div class="modal-tags">
             ${techHTML}
         </div>
+        ${githubHTML}
     `;
     
     modal.classList.add('active');
